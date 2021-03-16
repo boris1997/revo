@@ -25,28 +25,6 @@
     bottom: rem(181px);
   }
 
-  &__f-title {
-    font-size: rem(40px);
-    max-width: rem(880px);
-    text-align: center;
-  }
-  &__row {
-    @include flexbox(row, space-between, center);
-    max-width: rem(580px);
-  }
-
-  &__s-title {
-    font-size: rem(24px);
-  }
-
-  &__icon {
-    font-size: rem(42px);
-  }
-
-  &__img {
-    height: rem(650px);
-  }
-
   &__menu-item {
     background: rgba(0, 0, 0, 0.5);
   }

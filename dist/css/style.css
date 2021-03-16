@@ -1,5 +1,3 @@
-/* No CSS */
-
 @font-face {
   font-family: "icomoon";
   src: url("fonts/icomoon.eot?oitnd");
@@ -62,15 +60,6 @@
 ._icon-rapid-drop:before {
   content: "\e907";
   color: #fff;
-}
-
-@font-face {
-  font-family: "icomoon";
-  font-display: swap;
-  /*     src: url("../fonts/") format("woff"), */
-  src: url("../fonts/icomoon.woff") format("woff"), url("../fonts/icomoon.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
 }
 
 /*normalize*/
@@ -200,10 +189,12 @@ img {
 
 .carousel__s-title {
   font-size: 1.875rem;
+  font-weight: 500;
 }
 
 .carousel__btn {
   color: #ffffff;
+  font-weight: 700;
   border: 0.0625rem solid #ffffff;
 }
 
@@ -234,6 +225,7 @@ img {
 
 .togglers__slide-number--active {
   color: #ffffff;
+  font-weight: 600;
 }
 
 .togglers__dash {
@@ -401,32 +393,6 @@ img {
 .main__mouse {
   position: absolute;
   bottom: 11.3125rem;
-}
-
-.main__f-title {
-  font-size: 2.5rem;
-  max-width: 55rem;
-  text-align: center;
-}
-
-.main__row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 36.25rem;
-}
-
-.main__s-title {
-  font-size: 1.5rem;
-}
-
-.main__icon {
-  font-size: 2.625rem;
-}
-
-.main__img {
-  height: 40.625rem;
 }
 
 .main__menu-item {

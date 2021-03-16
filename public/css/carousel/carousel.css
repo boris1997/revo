@@ -48,10 +48,12 @@
 
 .carousel__s-title {
   font-size: 1.875rem;
+  font-weight: 500;
 }
 
 .carousel__btn {
   color: #ffffff;
+  font-weight: 700;
   border: 0.0625rem solid #ffffff;
 }
 
@@ -91,6 +93,7 @@
 
 .togglers__slide-number--active {
   color: #ffffff;
+  font-weight: 600;
 }
 
 .togglers__dash {

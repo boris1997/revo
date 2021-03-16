@@ -153,7 +153,7 @@ function clean(params) {
 }
 
 
-function fontsStyle(params) {
+/* function fontsStyle(params) {
 
     let file_content = fs.readFileSync(source_folder + '/css/fonts.scss');
     if (file_content == '') {
@@ -173,13 +173,13 @@ function fontsStyle(params) {
         })
     }
 }
+ */
+/* function cb() { } */
 
-function cb() { }
-
-let build = gulp.series(clean, gulp.parallel(js, css, html, images, fontsWoff /* fontsWoff2 */), fontsStyle);
+let build = gulp.series(clean, gulp.parallel(js, css, html, images, fontsWoff /* fontsWoff2 *//* ), */ /* fontsStyle */));
 let watch = gulp.parallel(build, watchFiles, browserSync);
-
-exports.fontsStyle = fontsStyle;
+/* 
+exports.fontsStyle = fontsStyle; */
 exports.fontsWoff = fontsWoff;
 
 exports.images = images;

@@ -35,41 +35,6 @@
   bottom: 11.3125rem;
 }
 
-.main__f-title {
-  font-size: 2.5rem;
-  max-width: 55rem;
-  text-align: center;
-}
-
-.main__row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  max-width: 36.25rem;
-}
-
-.main__s-title {
-  font-size: 1.5rem;
-}
-
-.main__icon {
-  font-size: 2.625rem;
-}
-
-.main__img {
-  height: 40.625rem;
-}
-
 .main__menu-item {
   background: rgba(0, 0, 0, 0.5);
 }

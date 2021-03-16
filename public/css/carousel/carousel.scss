@@ -35,10 +35,12 @@
 
   &__s-title {
     font-size: rem(30px);
+    font-weight: 500;
   }
 
   &__btn {
     color: $mainColor;
+    font-weight: 700;
     border: rem(1px) solid $mainColor;
   }
 
@@ -65,6 +67,7 @@
 
   &__slide-number--active {
     color: $mainColor;
+    font-weight: 600;
   }
 
   &__dash {
