@@ -1,4 +1,0 @@
-PassengerNodejs /home/b/bob1997/.local/bin/node
-PassengerAppRoot /home/b/bob1997/vehicleblackboxdvr.ru/private
-PassengerAppType node
-PassengerStartupFile app.js
