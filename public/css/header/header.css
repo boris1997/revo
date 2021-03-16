@@ -36,6 +36,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.header__phone, .header__btn {
   color: #374fa3;
 }
 
@@ -44,7 +47,6 @@
 }
 
 .header__phone {
-  color: #374fa3;
   font-weight: 600;
   font-size: 0.875rem;
 }
