@@ -1,0 +1,102 @@
+@import "../vars&mixins.scss";
+@import "../../../node_modules/sass-rem/rem";
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  @include flexbox(row, flex-end, flex-end);
+
+  &__content {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    overflow: hidden;
+  }
+  &__item {
+    min-width: 100vw;
+  }
+
+  &__wrapper {
+    padding-left: rem(165px);
+    padding-top: rem(102px);
+  }
+
+  &__title {
+    font-size: rem(60px);
+    max-width: rem(852px);
+    text-transform: uppercase;
+    line-height: rem(73px);
+  }
+
+  &__s-title {
+    font-size: rem(30px);
+  }
+
+  &__btn {
+    color: $mainColor;
+    border: rem(1px) solid $mainColor;
+  }
+
+  &__s-title {
+    margin-top: rem(30px);
+  }
+  &__btn {
+    margin-top: rem(46px);
+  }
+}
+
+.togglers {
+  margin-bottom: rem(45px);
+
+  &__header {
+    @include flexbox(row, space-between, center);
+    margin-bottom: rem(27px);
+  }
+
+  &__slide-number {
+    font-size: rem(13px);
+    color: #939393;
+  }
+
+  &__slide-number--active {
+    color: $mainColor;
+  }
+
+  &__dash {
+    width: rem(15px);
+    height: rem(1px);
+    background-color: #939393;
+  }
+  &__content {
+    width: rem(60px);
+    height: rem(119px);
+    border: rem(1px) solid #838383;
+    @include flexbox(column, space-between, center);
+    position: relative;
+    &::after {
+      position: absolute;
+      content: "";
+      height: rem(1px);
+      width: 100%;
+      top: 50%;
+      background-color: #838383;
+    }
+  }
+
+  &__item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    @include flexbox(column, center, center);
+  }
+
+  &__item:first-child > &__icon {
+    transform: rotate(180deg);
+  }
+}

@@ -1,0 +1,69 @@
+@import "../vars&mixins.scss";
+@import "../../../node_modules/sass-rem/rem";
+
+.header {
+  background-color: $mainColor;
+  color: #596088;
+  width: 100%;
+  font-size: rem(12px);
+  &__content,
+  &__list,
+  &__social-medias {
+    @include flexbox(row, space-between, center);
+  }
+  &__contacts {
+    width: rem(267px);
+    @include flexbox(row, space-between, center);
+    color: #374fa3;
+  }
+
+  &__btn {
+    border: 1px solid #dde2f4;
+  }
+
+  &__phone {
+    color: #374fa3;
+    font-weight: 600;
+    font-size: rem(14px);
+  }
+}
+
+.nav {
+  &__list {
+    height: rem(80px);
+    width: rem(667px);
+    @include flexbox(row, space-between, center);
+  }
+
+  &__link {
+    font-weight: 600;
+    color: #596088;
+    text-transform: uppercase;
+  }
+}
+
+.logo {
+  @include flexbox(row, space-between, center);
+  min-width: rem(324px);
+  &__content {
+    position: relative;
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      bottom: 0;
+      right: rem(-20px);
+      margin: auto;
+      background-color: #dfdfdf;
+      height: rem(33px);
+      width: rem(1px);
+    }
+  }
+  &__img {
+    height: rem(46.3px);
+  }
+  &__title {
+    max-width: rem(146px);
+    color: #989a9e;
+  }
+}

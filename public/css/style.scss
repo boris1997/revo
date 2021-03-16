@@ -2,74 +2,77 @@
 @import "../../node_modules/sass-rem/rem";
 @import "./fonts";
 
+/*normalize*/
 * {
   padding: 0;
   margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
   box-sizing: border-box;
-  scroll-behavior: smooth;
-  @media (max-width: 550px) {
-    font-size: 14px;
-  }
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
 }
 
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
 body {
-  background-color: $mainColor;
-  color: $secColor;
-
-  font-family: "Gilroy";
-  /* overflow: hidden; */
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-family: "Montserrat";
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
 }
 
-a {
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
   text-decoration: none;
-  color: $mainColor;
 }
-
-li {
+a:hover {
+  text-decoration: none;
+}
+ul li {
   list-style: none;
+}
+img {
+  vertical-align: top;
 }
 
 .container {
-  max-width: rem(1400px);
+  max-width: rem(1540px);
   height: 100%;
   margin: auto;
-  padding: 0 1rem;
   overflow: hidden;
-}
-
-.section {
-  position: relative;
-}
-
-.page {
-  &__main {
-  }
-  &__sidebar {
-    height: calc(100% - 3.4rem);
-    width: 100%;
-    top: rem(54px);
-    visibility: hidden;
-    transition: all 0.3s ease-in-out;
-    position: fixed;
-  }
-
-  &__sidebar--active {
-    visibility: visible;
-  }
-  &__title {
-    font-size: rem(32px);
-    /* color: #0C6DB2; */
-    color: $secColor;
-    position: relative;
-    border-bottom: 1px solid black;
-    line-height: rem(46px);
-
-    @media screen and (max-width: 550px) {
-      font-size: rem(27px);
-    }
-  }
-}
-
-.page--no-scroll {
-  overflow: hidden !important;
 }

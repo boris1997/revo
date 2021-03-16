@@ -2,85 +2,36 @@
 @import "../../../node_modules/sass-rem/rem";
 
 .menu {
-  background-color: $secColor;
-  color: $mainColor;
-  position: fixed;
-  width: 100%;
-  z-index: 60;
-
-  &__content,
-  &__list,
-  &__social-medias {
-    @include flexbox(row, space-between, center);
-  }
-
-  /*   &__content {
-    height: rem(70px);
-  } */
-
-  &__nav {
-    @media (max-width: 1024px) {
-      display: none;
-    }
-  }
-
-  &__list {
-    height: rem(70px);
-  }
-
-  &__items {
-    height: 100%;
-    @include flexbox(row, center, center);
-    border-radius: 33px;
-    height: 2.2rem;
-  }
-
-  &__link {
-    @include flexbox(row, center, center);
-    border-radius: 33px;
-    height: 100%;
-    padding: 0 1rem;
-  }
-
-  &__items:hover,
-  &__items--active {
-    height: 2.2rem !important;
-    background-color: #2a75d8 !important;
-  }
-
-  /* &__items:hover ~ &__items {
-    background-color: $secColor !important;
-  } */
-
-  // &__link:nth-child(1) {
-  //   @include flexbox(row, center, center);
-  //   height: 100%;
-  //   /*   border-bottom: 5px solid $thirdColor; */
-  // }
-  &__hamburger-menu {
-    width: rem(50px);
-    display: none;
-    @media (max-width: 1024px) {
-      display: block;
-      /*  &__hamburger-menu--active {
-      } */
-    }
-  }
-
-  &__social-medias {
-    width: rem(120px);
-  }
-  &__list {
-    width: rem(620px);
-  }
-  &__link {
+  @include flexbox(row, center, center);
+  &__item {
+    @include flexbox(column, space-between, center);
+    width: rem(219.5px);
+    height: rem(120px);
     color: $mainColor;
+    z-index: 3;
   }
-}
-
-.social-media {
+  &__item:not(:first-child) {
+    margin-left: rem(1px);
+  }
   &__icon {
-    color: $mainColor;
-    font-size: rem(24px);
+    font-size: rem(40px);
+    margin-top: rem(27px);
+  }
+
+  &__icon-rapid-drop {
+    font-size: rem(52px);
+  }
+  &__icon-stations {
+    font-size: rem(56px);
+    margin-top: rem(23px);
+  }
+  &__icon-reservoirs {
+    font-size: rem(36px);
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: rem(13px);
+    margin-bottom: rem(28px);
   }
 }

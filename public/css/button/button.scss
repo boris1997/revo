@@ -1,18 +1,16 @@
 @import "../vars&mixins.scss";
 @import "../../../node_modules/sass-rem/rem";
 
-.button {
-  &__close {
-    position: absolute;
-    top: rem(16px);
-    right: rem(24px);
-    z-index: 100;
-    cursor: pointer;
-    height: rem(80px);
-    width: rem(80px);
-    mask: url("../../assets/svg/icon_close.svg") no-repeat;
-    mask-position: center;
-    mask-size: contain;
-    background-color: $secColor;
+.btn {
+  background: transparent;
+  outline: none;
+  &__md {
+    width: rem(144px);
+    height: rem(40px);
+  }
+
+  &__bg {
+    width: rem(257px);
+    height: rem(60px);
   }
 }
