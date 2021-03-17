@@ -15,7 +15,7 @@
     right: 0;
     left: 0;
     margin: auto;
-    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
   }
   &__item {
     min-width: 100vw;
@@ -24,6 +24,11 @@
   &__wrapper {
     padding-left: rem(165px);
     padding-top: rem(102px);
+    height: auto !important;
+  }
+
+  &__wrapper--dragable {
+    cursor: grabbing;
   }
 
   &__title {
@@ -49,6 +54,25 @@
   }
   &__btn {
     margin-top: rem(46px);
+  }
+
+  &__btn-inner {
+    left: rem(-2px);
+  }
+  &__btn-inner-content {
+    &::before {
+      width: rem(400px);
+      height: rem(400px);
+      line-height: rem(400px);
+      left: rem(-70px);
+    }
+    &:hover {
+      color: $mainColor;
+
+      &::before {
+        box-shadow: inset 0 0 0 rem(320px) rgba(#374fa3, 1);
+      }
+    }
   }
 }
 
@@ -99,7 +123,19 @@
     @include flexbox(column, center, center);
   }
 
+  &__icon {
+    transition: transform 0.3s ease-in-out;
+  }
+
   &__item:first-child > &__icon {
     transform: rotate(180deg);
+  }
+
+  &__item:first-child:hover > &__icon {
+    transform: translate(rem(-5px)) rotate(180deg);
+  }
+
+  &__item:nth-child(2):hover > &__icon {
+    transform: translate(rem(5px));
   }
 }

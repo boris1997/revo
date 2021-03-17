@@ -46,6 +46,26 @@
   border: 1px solid #dde2f4;
 }
 
+.header__btn-inner {
+  left: -0.125rem;
+}
+
+.header__btn-inner-content::before {
+  width: 18.75rem;
+  height: 18.75rem;
+  line-height: 18.75rem;
+  left: -5rem;
+}
+
+.header__btn-inner-content:hover {
+  color: #ffffff;
+}
+
+.header__btn-inner-content:hover::before {
+  -webkit-box-shadow: inset 0 0 0 20rem #374fa3;
+          box-shadow: inset 0 0 0 20rem #374fa3;
+}
+
 .header__phone {
   font-weight: 600;
   font-size: 0.875rem;
@@ -73,6 +93,23 @@
   font-weight: 600;
   color: #596088;
   text-transform: uppercase;
+  position: relative;
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  left: 0;
+  bottom: -0.125rem;
+  height: 0.0625rem;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  background-color: #596088;
+}
+
+.nav__link:hover::after {
+  width: 100%;
 }
 
 .logo {

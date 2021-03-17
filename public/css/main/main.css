@@ -37,6 +37,15 @@
 
 .main__menu-item {
   background: rgba(0, 0, 0, 0.5);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+
+.main__menu-item:hover {
+  -webkit-transform: translateY(-0.625rem);
+          transform: translateY(-0.625rem);
 }
 
 .mouse__cursor {

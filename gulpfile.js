@@ -125,12 +125,7 @@ function fontsWoff() {
         .pipe(ttf2woff2())
         .pipe(dest(path.build.fonts))
 }
-/* function fontsWoff2() {
-    return src(path.src.fonts)
-        .pipe(ttf2woff2())
-        .pipe(dest(path.build.fonts))
-}
- */
+
 /* gulp.task('otf2ttf', () => {
     return src([source_folder + '/fonts/*.otf'])
         .pipe(fonter({
