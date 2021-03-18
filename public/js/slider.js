@@ -15,20 +15,11 @@ class Slider {
         this.animationID = 0;
     }
 
-    translateSlides = () => {
-        for (let i = 1; i < content.length; i++) {
-            this.translate();
-        }
-        window.addEventListener("resize", () => {
-            this.translate();
-        });
 
-    }
-    translate = () => {
-        for (let i = 1; i < content.length; i++) {
-            content[i].style.left = content[i].clientWidth * i + "px";
+    resizeWindow = () => {
+        window.onresize = () => {
+            this.getTransformation()
         }
-
     }
 
     contextMenu = () => {
@@ -100,7 +91,7 @@ class Slider {
         if (this.isDragging) requestAnimationFrame(this.animation)
     }
 
-    setSliderPosition = () => this.isDragging && (this.main.style.transform = `translateX(${this.currentTranslation}px)`)
+    setSliderPosition = () => this.main.style.transform = `translateX(${this.currentTranslation}px)`
 
 
     getPositionX = (event) => event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
@@ -176,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const slideNumber = document.querySelector(".togglers__slide-count");
     const slider = new Slider(arrow, content, dragableItem, main, slideNumber);
     /* slider.translateSlides(); */
+    slider.resizeWindow();
     slider.getToggleBtns();
     slider.initDrag();
     slider.contextMenu();
