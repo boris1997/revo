@@ -71,10 +71,10 @@ class Slider {
         this.isDragging = false;
         this.dragableItem[this.currentIndex].classList.remove('carousel__wrapper--dragable')
         const activeSlide = document.querySelector(".carousel__item--active");
-        if (this.currentTranslation <= 0 && activeSlide.nextElementSibling && Math.abs(this.currentTranslation) > Math.abs(this.prevTranslation) + (activeSlide.clientWidth / 2.5)) {
+        if (this.currentTranslation <= 0 && activeSlide.nextElementSibling && Math.abs(this.currentTranslation) > Math.abs(this.prevTranslation) + (activeSlide.clientWidth / 4.5)) {
             this.toggleAciveElement(activeSlide, activeSlide.nextElementSibling)
             this.getTransformation(e);
-        } else if (this.currentTranslation <= 0 && activeSlide.previousElementSibling && Math.abs(this.currentTranslation) < Math.abs(this.prevTranslation) - (activeSlide.clientWidth / 2.5)) {
+        } else if (this.currentTranslation <= 0 && activeSlide.previousElementSibling && Math.abs(this.currentTranslation) < Math.abs(this.prevTranslation) - (activeSlide.clientWidth / 4.5)) {
             this.toggleAciveElement(activeSlide, activeSlide.previousElementSibling)
             this.getTransformation(e);
         } else {
