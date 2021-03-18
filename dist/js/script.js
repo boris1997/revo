@@ -31,13 +31,12 @@ class Slider {
     }
 
     initDrag = () => {
-        console.log(this.content)
+        /*         console.log(this.content) */
         this.content.map((dragableItem, i) => {
 
             dragableItem.addEventListener('dragstart', (e) => e.preventDefault())
 
             //touch event
-            console.log(i)
             dragableItem.addEventListener('touchstart', this.touchStart(i), { passive: true })
             dragableItem.addEventListener('touchend', (e) => this.touchEnd(e))
             dragableItem.addEventListener('touchmove', this.touchMove, { passive: true })
@@ -46,15 +45,15 @@ class Slider {
             //mouse event
             dragableItem.addEventListener('mousedown', this.touchStart(i), { passive: true })
             dragableItem.addEventListener('mouseup', (e) => this.touchEnd(e))
-            dragableItem.addEventListener('mouseleave', (e) => this.touchEnd(e))
             dragableItem.addEventListener('mousemove', this.touchMove, { passive: true })
+            /*  dragableItem.addEventListener('mouseleave', (e) => this.touchEnd(e)) */
 
 
         })
     }
 
     touchStart = (i) => {
-        console.log(i)
+        /*         console.log(i) */
         return (event) => {
             this.dragableItem[i].classList.add('carousel__wrapper--dragable')
             this.currentIndex = i;
@@ -73,13 +72,11 @@ class Slider {
         const activeSlide = document.querySelector(".carousel__item--active");
         if (this.currentTranslation <= 0 && activeSlide.nextElementSibling && Math.abs(this.currentTranslation) > Math.abs(this.prevTranslation) + (activeSlide.clientWidth / 4.5)) {
             this.toggleAciveElement(activeSlide, activeSlide.nextElementSibling)
-            this.getTransformation(e);
         } else if (this.currentTranslation <= 0 && activeSlide.previousElementSibling && Math.abs(this.currentTranslation) < Math.abs(this.prevTranslation) - (activeSlide.clientWidth / 4.5)) {
             this.toggleAciveElement(activeSlide, activeSlide.previousElementSibling)
-            this.getTransformation(e);
-        } else {
-            this.getTransformation(e);
         }
+        this.getTransformation(e);
+        console.log('ok')
 
     }
 
@@ -149,7 +146,7 @@ class Slider {
 
     getTransformation = (e) => {
         /*  console.log('ok') */
-        console.log(e)
+        /*  console.log(e) */
         const activeSlide = document.querySelector(".carousel__item--active");
         /* console.log(activeSlide) */
         this.currentIndex = this.content.indexOf(activeSlide);
