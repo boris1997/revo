@@ -35,6 +35,7 @@
 
 .carousel__item {
   min-width: 100vw;
+  background: url("../assets/img/main-background.webp") no-repeat center center/cover;
 }
 
 .carousel__wrapper {
@@ -118,6 +119,7 @@
 .togglers__slide-number {
   font-size: 0.8125rem;
   color: #939393;
+  z-index: 1;
 }
 
 .togglers__slide-number--active {
@@ -129,6 +131,7 @@
   width: 0.9375rem;
   height: 0.0625rem;
   background-color: #939393;
+  z-index: 1;
 }
 
 .togglers__content {

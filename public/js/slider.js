@@ -31,7 +31,6 @@ class Slider {
     }
 
     initDrag = () => {
-        /*         console.log(this.content) */
         this.content.map((dragableItem, i) => {
 
             dragableItem.addEventListener('dragstart', (e) => e.preventDefault())
@@ -40,13 +39,14 @@ class Slider {
             dragableItem.addEventListener('touchstart', this.touchStart(i), { passive: true })
             dragableItem.addEventListener('touchend', (e) => this.touchEnd(e))
             dragableItem.addEventListener('touchmove', this.touchMove, { passive: true })
-            /* daragableImg.classList.add('slider__img--dragable') */
+
 
             //mouse event
             dragableItem.addEventListener('mousedown', this.touchStart(i), { passive: true })
             dragableItem.addEventListener('mouseup', (e) => this.touchEnd(e))
             dragableItem.addEventListener('mousemove', this.touchMove, { passive: true })
-            /*  dragableItem.addEventListener('mouseleave', (e) => this.touchEnd(e)) */
+            console.log('ok')
+            dragableItem.addEventListener('mouseleave', (e) => this.isDragging && this.touchEnd(e))
 
 
         })
@@ -76,14 +76,17 @@ class Slider {
             this.toggleAciveElement(activeSlide, activeSlide.previousElementSibling)
         }
         this.getTransformation(e);
-        console.log('ok')
+
 
     }
 
     touchMove = (e) => {
         if (this.isDragging) {
+
             const currentPosition = this.getPositionX(e);
-            this.currentTranslation = this.prevTranslation + currentPosition - this.startPos;
+            if (this.currentTranslation <= 0 && this.currentTranslation >= (this.content[0].clientWidth * (this.content.length - 1)) * -1) {
+                (this.currentTranslation = this.prevTranslation + currentPosition - this.startPos);
+            }
         }
     }
     animation = () => {
@@ -125,7 +128,7 @@ class Slider {
     }
 
 
-    left = () => {
+    left = (e) => {
         const activeSlide = document.querySelector(".carousel__item--active");
         if (activeSlide.previousElementSibling) {
 
@@ -145,15 +148,12 @@ class Slider {
     activeSlide = () => document.querySelector(".carousel__item--active");
 
     getTransformation = (e) => {
-        /*  console.log('ok') */
-        /*  console.log(e) */
         const activeSlide = document.querySelector(".carousel__item--active");
-        /* console.log(activeSlide) */
         this.currentIndex = this.content.indexOf(activeSlide);
         this.slideNumber.textContent = this.currentIndex + 1;
         this.prevTranslation = this.currentIndex * -activeSlide.clientWidth;
         this.currentTranslation = -this.currentIndex * activeSlide.clientWidth;
-        e ? this.main.style.transform = `translate(-${this.currentIndex}00%)` : (this.main.style.transform = `translate(${this.currentTranslation}px)`)
+        e ? this.main.style.transform = `translate(-${this.currentIndex}00vw)` : (this.main.style.transform = `translate(${this.currentTranslation}px)`)
     }
 
 }
@@ -167,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const main = document.querySelector(".carousel__content");
     const slideNumber = document.querySelector(".togglers__slide-count");
     const slider = new Slider(arrow, content, dragableItem, main, slideNumber);
-    /* slider.translateSlides(); */
     slider.resizeWindow();
     slider.getToggleBtns();
     slider.initDrag();
