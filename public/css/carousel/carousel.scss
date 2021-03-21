@@ -15,6 +15,9 @@
     right: 0;
     left: 0;
     margin: auto;
+  }
+
+  &__content--smooth {
     transition: transform 0.5s ease-in-out;
   }
   &__item {

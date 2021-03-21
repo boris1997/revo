@@ -55,7 +55,8 @@ class Slider {
     touchStart = (i) => {
         /*         console.log(i) */
         return (event) => {
-            this.dragableItem[i].classList.add('carousel__wrapper--dragable')
+            this.dragableItem[i].classList.add('carousel__wrapper--dragable');
+            this.main.classList.remove('carousel__content--smooth');
             this.currentIndex = i;
             this.startPos = this.getPositionX(event);
             this.isDragging = true;
@@ -69,6 +70,7 @@ class Slider {
         cancelAnimationFrame(this.animationID)
         this.isDragging = false;
         this.dragableItem[this.currentIndex].classList.remove('carousel__wrapper--dragable')
+        this.main.classList.add('carousel__content--smooth');
         const activeSlide = document.querySelector(".carousel__item--active");
         if (this.currentTranslation <= 0 && activeSlide.nextElementSibling && Math.abs(this.currentTranslation) > Math.abs(this.prevTranslation) + (activeSlide.clientWidth / 4.5)) {
             this.toggleAciveElement(activeSlide, activeSlide.nextElementSibling)
