@@ -11,7 +11,6 @@
     display: flex;
     overflow: hidden;
     padding-right: 88px;
-    border-top: 2px solid #edf0f5;
   }
   &__img-container {
     z-index: 1;
@@ -32,14 +31,14 @@
   }
   &__body {
     @include flexbox(row, "", space-between);
-    background-color: #fff;
     flex: 1;
     width: 100%;
-    border-top: 2px solid $lightGrey;
-    border-bottom: 2px solid $lightGrey;
   }
   &__body-wrapper {
     min-width: 100%;
+    border-top: 2px solid $lightGrey;
+    border-bottom: 1px solid $lightGrey;
+    background-color: #fff;
     /*   min-width: 100%; */
     display: flex;
   }
@@ -101,12 +100,14 @@
 
 .togglers {
   min-width: 88px;
-  border-top: 2px solid #edf0f5;
+  border-top: 2px solid $lightGrey;
+  border-bottom: 1px solid $lightGrey;
   z-index: 2;
   overflow: hidden;
   @include flexbox(column, space-between, center);
   position: relative;
-  &__item {
+  &__item,
+  &__item-move {
     width: rem(88px);
     @include flexbox(column, center, center);
     cursor: pointer;
@@ -138,6 +139,9 @@
     background-color: #fff;
 
     border-left: rem(1px) solid #edf0f5;
+  }
+  &__item-move--smooth {
+    transition: transform 0.2s ease-in-out;
   }
   &__item-move > &__amount {
     opacity: 1;

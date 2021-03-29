@@ -1,29 +1,25 @@
-
 class Slider {
 
-    constructor(arrow, content, main, stopperFactor) {
+    constructor(content, main, arrow, toggleBtn, toggleMoveGif, stopperFactor) {
 
-        this.arrow = arrow,
-            this.content = content,
+        this.content = content,
             this.main = main,
+            this.arrow = arrow,
+            this.toggleBtn = toggleBtn,
+            this.toggleMoveGif = toggleMoveGif,
             this.isDragging = false,
             this.currentIndex = 0,
             this.startPos = 0,
-            this.translateStep = 0,
-            this.currentTranslation = 0;
-        this.margin = 0;
-        this.elemntsMargins = 0;
-        this.prevTranslation = 0;
-        this.animationID = 0;
-        this.stopperFactor = stopperFactor;
+            this.translateStepX = 0,
+            this.currentTranslationX = 0,
+            this.currentTranslationY,
+            this.margin = 0,
+            this.elemntsMargins = 0,
+            this.prevTranslation = 0,
+            this.animationID = 0,
+            this.stopperFactor = stopperFactor;
     }
 
-
-    resizeWindow = () => {
-        window.onresize = (e) => {
-            this.getTransformation(e)
-        }
-    }
 
     contextMenu = () => {
         window.oncontextmenu = (e) => {
@@ -56,114 +52,142 @@ class Slider {
     }
 
     touchStart = (i) => {
+
+        // Начало тач события 
         return (event) => {
-            /*   this.dragableItem[i].classList.add('carousel__wrapper--dragable'); */
-            this.main.classList.remove('carousel__content--smooth');
-            this.startPos = this.getPositionX(event);
-            this.isDragging = true;
-            this.animationID = requestAnimationFrame(this.animation)
+
+            this.main.classList.remove('carousel__content--smooth');  // удаляем плавность при движении, чтобы не было задержек
+            this.startPos = this.getPositionX(event); // узнаем стартовую позицию мыши
+            this.isDragging = true; // инициализируем перетаскивание
+            this.animationID = requestAnimationFrame(this.animation) // запускаем анимацию
         }
     }
 
 
     touchEnd = (e) => {
+        // Остановка тач события
 
-        cancelAnimationFrame(this.animationID)
-        this.isDragging = false;
-        this.main.classList.add('carousel__content--smooth');
-        console.log(this.currentIndex)
-        console.log(this.content.length)
+
+        cancelAnimationFrame(this.animationID)  // отмена анимацию
+        this.isDragging = false; // отсановка перетаскивания
+        this.main.classList.add('carousel__content--smooth');  // возвращаем плавность для событий на клик стрелки 
+
+        // Изменям индекс в зависимости от текущей трансформации
         if (this.currentIndex < this.content.length) {
-            Math.abs(this.currentTranslation) > ((Math.abs(this.prevTranslation) + this.translateStep / 3)) && (this.currentIndex++, console.log('ok'));
+            Math.abs(this.currentTranslationX) > ((Math.abs(this.prevTranslation) + this.translateStepX / 3)) && (this.currentIndex++, console.log('ok'));
         }
         if (this.currentIndex >= 0) {
             console.log(this.content.length - 1)
-            Math.abs(this.currentTranslation) < ((Math.abs(this.prevTranslation) - this.translateStep / 3)) && (this.currentIndex--);
+            Math.abs(this.currentTranslationX) < ((Math.abs(this.prevTranslation) - this.translateStepX / 3)) && (this.currentIndex--);
         }
-        this.getTransformation()
 
+
+        this.setPrevTranslation();            // Устанавливаем предыдущий транслэйте
+        this.setCurrentXTranslation();        // Устанавливаем текущий транслэйте
+        this.changeArrowActivity();           // Изменяем активность кнопопк
+        this.setSliderPositionX(this.main);   // Устанавливаем транслэйт для слайдера
+        this.getUnactiveElts();               // меняем опасити элементов 
     }
 
     touchMove = (e) => {
-        if (this.isDragging) {
 
-            let currentPosition = this.getPositionX(e);
-            if (Math.abs(this.currentTranslation) + 100 <= (this.translateStep * this.content.length) + this.elemntsMargins && this.currentTranslation < 2) {
-                console.log(Math.abs(this.currentTranslation));
-                (this.currentTranslation = ((this.prevTranslation * this.main.clientWidth / 100) + currentPosition - this.startPos) / this.main.clientWidth * 100);
+        // тач событие
+
+        if (this.isDragging) { // если драг активен
+
+            let currentPosition = this.getPositionX(e); // узнаем  позицию мыши
+            // останавливаем транслэйт при выходе из контейнера 
+            if (Math.abs(this.currentTranslationX) + 100 <= (this.translateStepX * this.content.length) + this.elemntsMargins && this.currentTranslationX < 2) {
+                console.log(Math.abs(this.currentTranslationX));
+                (this.currentTranslationX = ((this.prevTranslation * this.main.clientWidth / 100) + currentPosition - this.startPos) / this.main.clientWidth * 100);
             }
         }
     }
     animation = () => {
-        this.setSliderPosition();
+        // анимация если драг активен
+        this.setSliderPositionX(this.main);
         if (this.isDragging) requestAnimationFrame(this.animation)
     }
 
-    setSliderPosition = () => {
-        console.log(this.currentTranslation)
-        this.main.style.transform = `translate(${this.currentTranslation}%)`
+    setSliderPositionX = (element) => element.style.transform = `translateX(${this.currentTranslationX}%)` // Устанавливаем транслэйт для элемента по x координате
+
+    setSliderPositionY = (element) => element.style.transform = `translateY(${-this.currentTranslationY}%)` // Устанавливаем транслэйт для элемента по y координате
+
+
+    getPositionX = (event) => event.type.includes('mouse') ? event.pageX : event.touches[0].clientX; // Позиция мыши/пальца
+
+    absToPercent = (absolute, container) => absolute / container * 100  // Перевод в проценты
+
+
+    initArrowsBtns = () => {
+        this.arrow[0].addEventListener("click", () => this.left()); // левая стрелка
+
+        this.arrow[1].addEventListener("click", () => this.rigth()); // праввая стрелка
     }
 
+    initToggleBtns = () => {
 
-    getPositionX = (event) => event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-
-    absToPercent = (absolute, container) => absolute / container * 100
-
-
-    getToggleBtns = () => {
-        this.arrow[0].addEventListener("click", (e) => {
-            this.left(e);
-        });
-
-        this.arrow[1].addEventListener("click", (e) => {
-            this.rigth(e);
-        });
+        this.toggleBtn.map((item, i) => item.addEventListener("click", () => {
+            this.currentIndex = i;
+            console.log(this.currentIndex)
+            this.setCurrentXTranslation();// Меняем текущий транслэйт слайдер 
+            this.setSliderPositionX(this.main);  // Устанавливаем транслэйт для слайдера
+            this.setCurrentYTranslation();// Меняем текущий транслэйт движущегося элемента
+            this.setSliderPositionY(this.toggleMoveGif);// Устанавливаем транслэйт для движущегося элемента
+            this.setSlideNumber(this.toggleMoveGif)// Устанавливаем номер слайда
+        }))
     }
 
+    setSlideNumber = (elem) => elem.textContent = this.currentIndex + 1  // Устанавливаем номер слайда
 
-
-
-    rigth = (e) => {
-        if (Math.abs(this.currentTranslation) * 2 + 100 <= (this.translateStep * this.content.length) + this.elemntsMargins) {
-            this.currentIndex++
-            this.getTransformation()
+    rigth = () => {
+        if (Math.abs(this.currentTranslationX) * 2 + 100 <= (this.translateStepX * this.content.length) + this.elemntsMargins) {
+            this.currentIndex++;
+            this.setPrevTranslation();  // Устанавливаем предыдущий транслэйт
+            this.setCurrentXTranslation();  // Устанавливаем текущий транслэйт
+            this.changeArrowActivity();  // Изменяем активность кнопопк
+            this.setSliderPositionX(this.main);// Устанавливаем транслэйт для слайдера
+            this.getUnactiveElts();  // меняем опасити элементов 
         }
 
     }
 
 
-    left = (e) => {
-        console.log(Math.abs(this.currentTranslation))
-        if (Math.abs(this.currentTranslation) > 0) {
+    left = () => {
+        console.log(Math.abs(this.currentTranslationX))
+        if (Math.abs(this.currentTranslationX) > 0) {
             this.currentIndex--
-            this.getTransformation(e)
+            this.setPrevTranslation();      // Устанавливаем предыдущий транслэйт
+            this.setCurrentXTranslation();  // Устанавливаем текущий транслэйт
+            this.changeArrowActivity();  // Изменяем активность кнопопк
+            this.setSliderPositionX(this.main);// Устанавливаем транслэйт для слайдера
+            this.getUnactiveElts();  // меняем опасити элементов 
         }
     }
 
+    changeArrowActivity = () => {
 
-
-    getTransformation = () => {
-        this.prevTranslation = (this.currentIndex * -(this.content[0].clientWidth + this.margin)) / this.main.clientWidth * 100;
-        this.currentTranslation = (this.currentIndex) * -this.translateStep;
-        Math.abs(this.currentTranslation) > 0 ? (this.arrow[0].classList.contains('carousel__toggle-btn--unactive') && this.arrow[0].classList.remove('carousel__toggle-btn--unactive')) : this.arrow[0].classList.add('carousel__toggle-btn--unactive');
-        if (Math.abs(this.currentTranslation) + Math.abs(this.currentTranslation) + 100 >= (this.translateStep * this.content.length) + this.elemntsMargins) {
+        // меняем активность стрелок
+        Math.abs(this.currentTranslationX) > 0 ? (this.arrow[0].classList.contains('carousel__toggle-btn--unactive') && this.arrow[0].classList.remove('carousel__toggle-btn--unactive')) : this.arrow[0].classList.add('carousel__toggle-btn--unactive');
+        if (Math.abs(this.currentTranslationX) + Math.abs(this.currentTranslationX) + 100 >= (this.translateStepX * this.content.length) + this.elemntsMargins) {
             this.arrow[1].classList.add('carousel__toggle-btn--unactive');
         } else {
             this.arrow[1].classList.remove('carousel__toggle-btn--unactive');
 
         }
-        this.setSliderPosition()
-        this.getUnactiveElts()
     }
 
-    isUnactiveElts = () => this.content.some((item, i) => {
-        console.log(item)
-        return this.main.clientWidth < item.offsetLeft
-    })
+    setPrevTranslation = () => this.prevTranslation = (this.currentIndex * -(this.content[0].clientWidth + this.margin)) / this.main.clientWidth * 100;// Устанавливаем предыдущий трансл
+
+
+    setCurrentXTranslation = () => this.currentTranslationX = (this.currentIndex) * -this.translateStepX; //Меняем текущий X транслэйт
+
+    setCurrentYTranslation = () => this.currentTranslationY = (this.currentIndex) * -this.translateStepY; //Меняем текущий Y транслэйт
+
 
     getUnactiveElts = () => this.content.map(item => {
+        // меняем опасити элементов 
         const translationtoAbs = (Math.abs(this.currentTranslation) * this.main.clientWidth / 100).toFixed();
-
         if (this.main.clientWidth < ((item.offsetLeft + this.margin) - translationtoAbs) || item.offsetLeft - translationtoAbs < 0) {
             console.log('ok')
             item.classList.add('carousel__item--unActive')
@@ -175,16 +199,19 @@ class Slider {
     })
 
     getMargin = () => {
+        // Узнаем отутупы для правельного транслэйта
         this.margin = +getComputedStyle(this.content[0]).marginLeft.split('px').join('');
         this.elemntsMargins = this.absToPercent((this.margin * this.content.length), this.getTotalElementsWidth()) - this.stopperFactor;
-        console.log(this.margin)
+
     }
 
-    getTranslateStep = () => {
-        this.translateStep = (this.content[0].clientWidth + this.margin) / this.main.clientWidth * 100
-    }
+    getTranslateStepX = () => this.translateStepX = (this.content[0].clientWidth + this.margin) / this.main.clientWidth * 100  // Узнаем шаг для X транслэйта
 
-    getTotalElementsWidth = () => (this.content[0].clientWidth + this.margin) * this.content.length
+
+    getTranslateStepY = () => this.translateStepY = 100; // Узнаем шаг для Y транслэйта
+
+
+    getTotalElementsWidth = () => (this.content[0].clientWidth + this.margin) * this.content.length // Узнаем общую ширину для всех эелементов слайдера
 
 }
 
@@ -198,12 +225,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainCof = document.querySelector(".coffee__body-wrapper");
     const stopperFactorCof = 0;
 
-    const sliderCoffee = new Slider(arrowCof, contentCof, mainCof, stopperFactorCof);
+    const sliderCoffee = new Slider(contentCof, mainCof, arrowCof, null, null, stopperFactorCof);
 
     sliderCoffee.getMargin();
     sliderCoffee.getUnactiveElts();
-    sliderCoffee.getTranslateStep();
-    sliderCoffee.getToggleBtns();
+    sliderCoffee.getTranslateStepX();
+    sliderCoffee.initArrowsBtns();
     sliderCoffee.initDrag();
     sliderCoffee.contextMenu();
 
@@ -215,13 +242,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentCom = [...document.querySelectorAll(".combo__item")];
     const mainCom = document.querySelector(".combo__body-wrapper");
     const stopperFactorCom = 4;
-    const sliderCombo = new Slider(arrowCom, contentCom, mainCom, stopperFactorCom);
+    const sliderCombo = new Slider(contentCom, mainCom, arrowCom, null, null, stopperFactorCom);
 
     sliderCombo.getMargin();
     sliderCombo.getUnactiveElts();
-    sliderCombo.getTranslateStep();
-    sliderCombo.getToggleBtns();
+    sliderCombo.getTranslateStepX();
+    sliderCombo.initArrowsBtns();
     sliderCombo.initDrag();
     sliderCombo.contextMenu();
+
+
+
+    // Giftset Slider
+
+    const contentGif = [...document.querySelectorAll(".giftset__body-wrapper")];
+    const mainGif = document.querySelector(".giftset__body");
+    const toggleBtnGif = [...document.querySelectorAll(".togglers__item")];
+    const toggleMoveGif = document.querySelector(".togglers__item-move");
+    const sliderGiftset = new Slider(contentGif, mainGif, null, toggleBtnGif, toggleMoveGif, null);
+
+    sliderGiftset.getMargin();
+    sliderGiftset.getTranslateStepX();
+    sliderGiftset.getTranslateStepY(toggleMoveGif, mainGif);
+    sliderGiftset.initToggleBtns();
 
 })
