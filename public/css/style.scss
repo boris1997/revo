@@ -32,12 +32,10 @@ html,
 body {
   height: 100%;
   width: 100%;
-  font-size: 100%;
+  background-color: #f9fbff;
+  font-size: rem(16px);
   line-height: 1;
-  font-family: "Montserrat";
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+  font-family: "Nunito";
 }
 input,
 button,
@@ -69,9 +67,81 @@ img {
   vertical-align: top;
 }
 
-.container {
-  max-width: rem(1540px);
+h1,
+h2 {
+  font-family: "Montserrat";
+  color: $primaryColor;
+}
+
+.container,
+.container-md {
+  max-width: rem(1400px);
   height: 100%;
   margin: auto;
   overflow: hidden;
+}
+
+.container-md {
+  overflow: visible;
+  max-width: rem(1138px);
+}
+
+.page {
+  &__title {
+    margin-top: rem(88px);
+    margin-bottom: rem(72px);
+    line-height: rem(34px);
+    font-size: rem(30px);
+    height: rem(64px);
+
+    font-weight: 900;
+    color: $primaryColor;
+    @include flexbox(column, space-between, center);
+  }
+
+  &__title-span {
+    line-height: rem(24px);
+    font-family: "Nunito";
+    font-size: rem(20px);
+    font-weight: 600;
+  }
+}
+
+.section {
+  /*  padding-top: rem(87px);
+  padding-bottom: rem(128px); */
+  position: relative;
+  &::after {
+    @include position(absolute, "", 0, 0, 0, auto, auto);
+    height: 100%;
+    width: rem(384px);
+    z-index: -1;
+  }
+  &__body {
+    margin-bottom: rem(127px);
+  }
+  /*   &::after {
+    @include position(absolute, "", 0, 0, 0, 0, "");
+  } */
+}
+
+.item {
+  @include flexbox(column, center, center);
+  &__title {
+    line-height: rem(28px);
+    font-size: rem(24px);
+    font-weight: 700;
+    color: #232c38;
+  }
+  &__text {
+    line-height: rem(20px);
+    font-weight: 300;
+    color: $darkGrey;
+  }
+  &__price {
+    font-size: rem(20px);
+    line-height: rem(24px);
+    font-weight: 600;
+    color: $accentColor;
+  }
 }

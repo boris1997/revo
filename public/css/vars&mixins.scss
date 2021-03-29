@@ -1,11 +1,28 @@
-$mainColor: #ffffff;
-$secColor: #000000;
-$thirdColor: #2a75d8;
-$brownColor: #222222;
-$redColor: #d2001c;
-$yellowColor: #fed600;
+$primaryColor: #415167;
+$accentColor: #c7a17a;
+$accentColorSec: #f9f5e8;
+$darkGrey: #151d28;
+$lightGrey: #edf0f5;
 
 // #CF4363 #F9F871
+
+@mixin grid($margin, $rowGap, $columnGap, $rows, $rowWidth, $auto, $min, $max) {
+  margin-top: $margin;
+  display: grid;
+  grid-row-gap: $rowGap;
+  grid-column-gap: $columnGap;
+  grid-template: repeat($rows, $rowWidth) / repeat($auto, minmax($min, $max));
+}
+
+@mixin position($position, $content, $top, $bottom, $left, $right, $margin) {
+  position: $position;
+  content: $content;
+  top: $top;
+  bottom: $bottom;
+  left: $left;
+  right: $right;
+  margin: $margin;
+}
 
 @mixin flexbox($direction, $content, $align) {
   display: flex;

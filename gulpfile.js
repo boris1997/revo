@@ -13,14 +13,14 @@ let path = {
     },
     src: {
         html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
-        css: source_folder + "/css/**/*.css",
+        css: source_folder + "/css/**/*.scss",
         js: source_folder + "/js/**/*.js",
         assets: source_folder + "/assets/**/*.{jpg,png,svg,gif,ico,mp4}",
         fonts: source_folder + "/fonts/**/*.{ttf,woff,woff2,eot,css}"
     },
     watch: {
         html: source_folder + "/**/*.html",
-        css: source_folder + "/css/**/*.css",
+        css: source_folder + "/css/**/*.scss",
         js: source_folder + "/js/**/*.js",
         assets: source_folder + "/assets/**/*.{jpg,png,svg,gif,ico,mp4}"
     },
@@ -40,8 +40,7 @@ let { src, dest } = require('gulp'),
     concat = require('gulp-concat'),
     imagemin = require('gulp-imagemin'),
     webp = require('gulp-webp'),
-    ttf2woff = require('gulp-ttf2woff'),
-    ttf2woff2 = require('gulp-ttf2woff2'),
+    scss = require('gulp-dart-sass'),
     /*  videofy = require('videofy'), */
     fs = require('fs')
 
@@ -86,14 +85,24 @@ function html() {
 
 function css() {
     return src(path.src.css)
-        .pipe(concat("style.css"))
-        .pipe(group_media())
+        /*     .pipe(scss({
+                outputStyle: "expanded"
+            }))
+            .pipe(dest(path.src.outPutCss)) */
+        .pipe(concat("style.scss"))
+        .pipe(scss({
+            outputStyle: "expanded"
+        }).on('error', scss.logError))
         .pipe(autoprefixer({
             overrideBrowserlist: ["last 5 versions"],
             cascade: true,
         }))
+        .pipe(group_media())
         .pipe(dest(path.build.css))
         .pipe(clean_css())
+        /*  .pipe(scss({
+             outputStyle: "expanded"
+         })) */
         .pipe(
             rename({
                 extname: ".min.css"
@@ -118,11 +127,11 @@ function js() {
 }
 
 function fontsWoff() {
-    src(path.src.fonts)
-        .pipe(ttf2woff())
-        .pipe(dest(path.build.fonts));
     return src(path.src.fonts)
-        .pipe(ttf2woff2())
+        /*   .pipe(ttf2woff())
+          .pipe(dest(path.build.fonts));
+      return src(path.src.fonts)
+          .pipe(ttf2woff2()) */
         .pipe(dest(path.build.fonts))
 }
 

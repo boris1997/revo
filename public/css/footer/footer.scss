@@ -1,0 +1,10 @@
+.footer {
+  @include flexbox(row, center, center);
+  height: rem(60px);
+  background-color: $lightGrey;
+  &__span {
+    font-size: rem(14px);
+    font-weight: 300;
+    font-style: italic;
+  }
+}

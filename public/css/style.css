@@ -33,12 +33,10 @@ html,
 body {
   height: 100%;
   width: 100%;
-  font-size: 100%;
+  background-color: #f9fbff;
+  font-size: 1rem;
   line-height: 1;
-  font-family: "Montserrat";
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+  font-family: "Nunito";
 }
 
 input,
@@ -77,10 +75,108 @@ img {
   vertical-align: top;
 }
 
-.container {
-  max-width: 96.25rem;
+h1,
+h2 {
+  font-family: "Montserrat";
+  color: #415167;
+}
+
+.container,
+.container-md {
+  max-width: 87.5rem;
   height: 100%;
   margin: auto;
   overflow: hidden;
+}
+
+.container-md {
+  overflow: visible;
+  max-width: 71.125rem;
+}
+
+.page__title {
+  margin-top: 5.5rem;
+  margin-bottom: 4.5rem;
+  line-height: 2.125rem;
+  font-size: 1.875rem;
+  height: 4rem;
+  font-weight: 900;
+  color: #415167;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.page__title-span {
+  line-height: 1.5rem;
+  font-family: "Nunito";
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.section {
+  /*  padding-top: rem(87px);
+  padding-bottom: rem(128px); */
+  position: relative;
+  /*   &::after {
+    @include position(absolute, "", 0, 0, 0, 0, "");
+  } */
+}
+.section::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  margin: auto;
+  height: 100%;
+  width: 24rem;
+  z-index: -1;
+}
+.section__body {
+  margin-bottom: 7.9375rem;
+}
+
+.item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.item__title {
+  line-height: 1.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #232c38;
+}
+.item__text {
+  line-height: 1.25rem;
+  font-weight: 300;
+  color: #151d28;
+}
+.item__price {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: #c7a17a;
 }
 /*# sourceMappingURL=style.css.map */

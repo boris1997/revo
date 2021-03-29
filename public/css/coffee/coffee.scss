@@ -1,0 +1,58 @@
+.coffee {
+  &__section {
+    &::after {
+      background-color: $primaryColor;
+    }
+  }
+  &__body {
+    position: relative;
+    padding: 0 rem(128px);
+    padding-right: rem(128px);
+    padding-left: rem(99px);
+  }
+  &__body-wrapper {
+    @include flexbox(row, space-between, space-between);
+  }
+
+  &__item {
+    min-width: 50.2%;
+  }
+
+  /*   &__item:nth-child(even){
+
+    margin-top: rem(29px);
+  } */
+}
+
+.item-coffee {
+  margin-left: rem(29px);
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    filter: drop-shadow(rem(0px) rem(4px) rem(24px) rgba(205, 205, 205, 0.5));
+  }
+  @include flexbox(row, space-between, space-between);
+  &:nth-child(2) {
+    margin-top: rem(29px);
+  }
+  &__left {
+    background-color: $lightGrey;
+  }
+
+  &__right {
+    padding: rem(42px);
+    background-color: #fff;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__title {
+    margin-top: rem(8px);
+  }
+
+  &__btn {
+    width: 100%;
+    @include flexbox(row, space-between, space-between);
+  }
+}

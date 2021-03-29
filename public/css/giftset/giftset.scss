@@ -1,0 +1,145 @@
+.giftset {
+  &__section {
+    &::after {
+      width: rem(384px);
+      background-color: $lightGrey;
+      width: rem(1076px);
+    }
+  }
+
+  &__slider {
+    display: flex;
+    overflow: hidden;
+    padding-right: 88px;
+    border-top: 2px solid #edf0f5;
+  }
+  &__img-container {
+    z-index: 1;
+    position: relative;
+    @include flexbox(column, center, center);
+    &::before {
+      @include position(absolute, "", 0, 0, 0, auto, auto);
+      height: 100%;
+      width: rem(256px);
+      background-color: $lightGrey;
+      z-index: -1;
+    }
+  }
+
+  &__img {
+    z-index: 0;
+    margin-top: rem(51px);
+  }
+  &__body {
+    @include flexbox(row, "", space-between);
+    background-color: #fff;
+    flex: 1;
+    width: 100%;
+    border-top: 2px solid $lightGrey;
+    border-bottom: 2px solid $lightGrey;
+  }
+  &__body-wrapper {
+    min-width: 100%;
+    /*   min-width: 100%; */
+    display: flex;
+  }
+
+  &__item {
+    align-items: flex-start;
+    margin-left: rem(64px);
+  }
+}
+
+.item-giftset {
+  &__text {
+    max-width: rem(430px);
+  }
+  &__title,
+  &__text {
+    margin-top: rem(12px);
+  }
+
+  &__btn {
+    margin-top: rem(46px);
+    width: rem(430px);
+    @include flexbox(row, space-between, center);
+  }
+}
+.info-giftset {
+  margin-top: rem(24px);
+  width: rem(430px);
+  @include flexbox(row, "", "");
+  &__item {
+    @include flexbox(row, space-between, center);
+  }
+  &__item:nth-child(2) {
+    margin-left: rem(70px);
+  }
+  &__text {
+    margin-left: rem(12px);
+  }
+  &__span {
+    font-weight: 600;
+  }
+}
+
+.btn-giftset {
+  &__buy {
+    width: rem(166px);
+    height: rem(38px);
+  }
+  &__more {
+    width: rem(200px);
+    height: rem(38px);
+    font-weight: 700;
+  }
+  /*   &__togglers {
+    min-width: 88px;
+    z-index: 2;
+  } */
+}
+
+.togglers {
+  min-width: 88px;
+  border-top: 2px solid #edf0f5;
+  z-index: 2;
+  overflow: hidden;
+  @include flexbox(column, space-between, center);
+  position: relative;
+  &__item {
+    width: rem(88px);
+    @include flexbox(column, center, center);
+    cursor: pointer;
+    flex: 1;
+
+    background: #f5f8fc;
+    font-size: rem(30px);
+    box-shadow: inset 10px 0px 10px -10px rgb(205 205 205 / 50%);
+    /*   opacity: 0.3; */
+    font-family: "Montserrat";
+  }
+
+  &__amount {
+    font-family: "Montserrat";
+    font-weight: 900;
+    color: $primaryColor;
+    opacity: 0.3;
+    line-height: rem(34px);
+  }
+
+  &__item-move {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    overflow: overlay;
+    color: $primaryColor;
+    box-shadow: rem(1px) rem(0px) rem(10px) rgb(205 205 205 / 50%);
+    background-color: #fff;
+
+    border-left: rem(1px) solid #edf0f5;
+  }
+  &__item-move > &__amount {
+    opacity: 1;
+  }
+}

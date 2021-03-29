@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "vars&mixins.scss"
-    ],
-    "names": [],
-    "file": "vars&mixins.css"
-}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"vars&mixins.css"}

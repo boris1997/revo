@@ -1,10 +1,22 @@
-@import "../vars&mixins.scss";
-@import "../../../node_modules/sass-rem/rem";
+@import "./vars&mixins.scss";
+@import "../../node_modules/sass-rem/rem";
 
 .btn {
-  background: transparent;
   outline: none;
+  background-color: transparent;
 
+  &__more {
+    background-color: transparent;
+    color: $primaryColor;
+    height: rem(32px);
+  }
+  &__buy {
+    background-color: $accentColor;
+    border-radius: rem(19px);
+    width: rem(134px);
+    height: rem(32px);
+    color: #f9fbff;
+  }
   //size
   &__md {
     width: rem(144px);

@@ -1,0 +1,17 @@
+.features {
+  &__body {
+    @include flexbox(row, space-between, space-between);
+    margin-top: rem(80px);
+  }
+}
+
+.item-feature {
+  &__title {
+    margin-top: rem(41.5px);
+  }
+  &__text {
+    margin-top: rem(12px);
+    text-align: center;
+    max-width: rem(226px);
+  }
+}
