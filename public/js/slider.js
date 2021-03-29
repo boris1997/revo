@@ -44,9 +44,7 @@ class Slider {
             dragableItem.addEventListener('mousedown', this.touchStart(i), { passive: true })
             dragableItem.addEventListener('mouseup', (e) => this.touchEnd(e))
             dragableItem.addEventListener('mousemove', this.touchMove, { passive: true })
-            console.log('ok')
             dragableItem.addEventListener('mouseleave', (e) => this.isDragging && this.touchEnd(e))
-
 
         })
     }
@@ -74,10 +72,9 @@ class Slider {
 
         // Изменям индекс в зависимости от текущей трансформации
         if (this.currentIndex < this.content.length) {
-            Math.abs(this.currentTranslationX) > ((Math.abs(this.prevTranslation) + this.translateStepX / 3)) && (this.currentIndex++, console.log('ok'));
+            Math.abs(this.currentTranslationX) > ((Math.abs(this.prevTranslation) + this.translateStepX / 3)) && (this.currentIndex++);
         }
         if (this.currentIndex >= 0) {
-            console.log(this.content.length - 1)
             Math.abs(this.currentTranslationX) < ((Math.abs(this.prevTranslation) - this.translateStepX / 3)) && (this.currentIndex--);
         }
 
@@ -98,7 +95,6 @@ class Slider {
             let currentPosition = this.getPositionX(e); // узнаем  позицию мыши
             // останавливаем транслэйт при выходе из контейнера 
             if (Math.abs(this.currentTranslationX) + 100 <= (this.translateStepX * this.content.length) + this.elemntsMargins && this.currentTranslationX < 2) {
-                console.log(Math.abs(this.currentTranslationX));
                 (this.currentTranslationX = ((this.prevTranslation * this.main.clientWidth / 100) + currentPosition - this.startPos) / this.main.clientWidth * 100);
             }
         }
@@ -129,7 +125,6 @@ class Slider {
 
         this.toggleBtn.map((item, i) => item.addEventListener("click", () => {
             this.currentIndex = i;
-            console.log(this.currentIndex)
             this.setCurrentXTranslation();// Меняем текущий транслэйт слайдер 
             this.setSliderPositionX(this.main);  // Устанавливаем транслэйт для слайдера
             this.setCurrentYTranslation();// Меняем текущий транслэйт движущегося элемента
@@ -154,7 +149,6 @@ class Slider {
 
 
     left = () => {
-        console.log(Math.abs(this.currentTranslationX))
         if (Math.abs(this.currentTranslationX) > 0) {
             this.currentIndex--
             this.setPrevTranslation();      // Устанавливаем предыдущий транслэйт
@@ -189,10 +183,8 @@ class Slider {
         // меняем опасити элементов 
         const translationtoAbs = (Math.abs(this.currentTranslation) * this.main.clientWidth / 100).toFixed();
         if (this.main.clientWidth < ((item.offsetLeft + this.margin) - translationtoAbs) || item.offsetLeft - translationtoAbs < 0) {
-            console.log('ok')
             item.classList.add('carousel__item--unActive')
         } else {
-            console.log(item);
             (item.classList.contains('carousel__item--unActive') && item.classList.remove('carousel__item--unActive'))
         }
 
