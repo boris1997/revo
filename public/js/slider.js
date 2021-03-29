@@ -182,8 +182,6 @@ class Slider {
     getUnactiveElts = () => this.content.map(item => {
         // меняем опасити элементов 
         const translationtoAbs = (Math.abs(this.currentTranslationX) * this.main.clientWidth / 100).toFixed();
-        console.log(translationtoAbs)
-        console.log('ok')
         if (this.main.clientWidth < ((item.offsetLeft + this.margin) - translationtoAbs) || item.offsetLeft - translationtoAbs < 0) {
             console.log('ok')
             item.classList.add('carousel__item--unActive')
