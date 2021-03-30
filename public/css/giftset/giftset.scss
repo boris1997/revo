@@ -17,9 +17,9 @@
     position: relative;
     @include flexbox(column, center, center);
     &::before {
-      @include position(absolute, "", 0, 0, 0, auto, auto);
+      @include position(absolute, "", 0, 0, rem(-1px), auto, auto);
       height: 100.5%;
-      width: rem(256px);
+      width: rem(257px);
       background-color: $lightGrey;
       z-index: -1;
     }
@@ -36,8 +36,8 @@
   }
   &__body-wrapper {
     min-width: 100%;
-    border-top: 2px solid $lightGrey;
-    border-bottom: 1px solid $lightGrey;
+    border-top: rem(2.5px) solid $lightGrey;
+    border-bottom: rem(1px) solid $lightGrey;
     background-color: #fff;
     display: flex;
   }
@@ -95,8 +95,8 @@
 
 .togglers {
   min-width: 88px;
-  border-top: 2px solid $lightGrey;
-  border-bottom: 1px solid $lightGrey;
+  border-top: rem(2px) solid $lightGrey;
+  border-bottom: rem(1px) solid $lightGrey;
   z-index: 2;
   overflow: hidden;
   @include flexbox(column, space-between, center);
@@ -131,7 +131,7 @@
     color: $primaryColor;
     box-shadow: rem(1px) rem(0px) rem(10px) rgb(205 205 205 / 50%);
     background-color: #fff;
-
+    top: rem(-1px);
     border-left: rem(1px) solid #edf0f5;
   }
   &__item-move--smooth {
