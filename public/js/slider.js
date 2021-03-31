@@ -1,10 +1,11 @@
 class Slider {
 
-    constructor(content, main, arrow, toggleBtn, toggleMoveGif, stopperFactor) {
+    constructor(content, main, arrow, resizeOberver, toggleBtn, toggleMoveGif, stopperFactor) {
 
         this.content = content,
             this.main = main,
             this.arrow = arrow,
+            this.resizeOberver = resizeOberver,
             this.toggleBtn = toggleBtn,
             this.toggleMoveGif = toggleMoveGif,
             this.isDragging = false,
@@ -18,8 +19,32 @@ class Slider {
             this.prevTranslation = 0,
             this.animationID = 0,
             this.stopperFactor = stopperFactor;
+        this.oserver = null;
     }
 
+
+    observerCallback = (entries) => {
+
+        // Настройка слайдера после изменения ширина слайда(в процентом соотношении)
+        this.getTranslateStepX(); // Узнаем шаг для X транслэйта
+        this.setPrevTranslation(); // Устанавливаем предыдущий транслэйт
+        this.getMainToContentIndex() // Узнаем насколько могут переполнятся элементы с контейнера слайдера, берется как отношенее элеметов в контецнера слайдера к общему количеству элементов в слайдере
+        this.currentIndex > this.getMainToContentIndex() && this.currentIndex--; // Уменьшаем индекс при переполнении
+        this.setCurrentXTranslation(); // Устанавливаем текущий транслэйт
+        this.changeArrowActivity(); // Изменяем активность кнопопок
+        this.setSliderPositionX(this.main); // Устанавливаем транслэйт для слайдера
+        this.getUnactiveElts(); // меняем опасити элементов 
+
+    }
+
+    observer = () => {
+
+        // resizeInteraction событие, которое срабатывает при измненнении ширины элемента(1 раз)
+        this.resizer = new ResizeObserver(this.observerCallback);
+        this.resizer.observe(this.resizeOberver)
+    }
+
+    getMainToContentIndex = () => this.content.length - ((this.absToPercent(this.main.clientWidth, this.getTotalElementsWidth()).toFixed() / 100) * this.content.length).toFixed()
 
     contextMenu = () => {
         window.oncontextmenu = (e) => {
@@ -94,6 +119,10 @@ class Slider {
 
             let currentPosition = this.getPositionX(e); // узнаем  позицию мыши
             // останавливаем транслэйт при выходе из контейнера 
+            /*   console.log(this.prevTranslation)
+              console.log(this.currentTranslationX)
+              console.log(this.elemntsMargins)
+              console.log(this.translateStepX) */
             if (Math.abs(this.currentTranslationX) + 100 <= (this.translateStepX * this.content.length) + this.elemntsMargins && this.currentTranslationX < 2) {
                 (this.currentTranslationX = ((this.prevTranslation * this.main.clientWidth / 100) + currentPosition - this.startPos) / this.main.clientWidth * 100);
             }
@@ -179,10 +208,13 @@ class Slider {
     setCurrentYTranslation = () => this.currentTranslationY = (this.currentIndex) * -this.translateStepY; //Меняем текущий Y транслэйт
 
 
-    getUnactiveElts = () => this.content.map(item => {
+    getUnactiveElts = () => this.content.map((item, i) => {
         // меняем опасити элементов 
-        const translationtoAbs = (Math.abs(this.currentTranslationX) * this.main.clientWidth / 100).toFixed();
-        if (this.main.clientWidth < ((item.offsetLeft + this.margin) - translationtoAbs) || item.offsetLeft - translationtoAbs < 0) {
+        const translationtoAbs = parseFloat((Math.abs(this.currentTranslationX) * this.main.clientWidth / 100).toFixed());
+        /*       console.log(translationtoAbs, this.margin, item.offsetLeft, this.currentIndex);
+              console.log(item.clientWidth)
+              console.log(this.main.clientWidth) */
+        if (this.main.clientWidth <= ((item.offsetLeft + this.margin + i) - translationtoAbs) || item.offsetLeft + i - translationtoAbs < 0) {
             console.log('ok')
             item.classList.add('carousel__item--unActive')
         } else {
@@ -216,9 +248,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const arrowCof = [...document.querySelectorAll(".coffee__toggle-btn")];
     const contentCof = [...document.querySelectorAll(".coffee__item")];
     const mainCof = document.querySelector(".coffee__body-wrapper");
+    const resizeOberverCof = document.querySelector(".coffee__resizeOberver");
     const stopperFactorCof = 0;
 
-    const sliderCoffee = new Slider(contentCof, mainCof, arrowCof, null, null, stopperFactorCof);
+    const sliderCoffee = new Slider(contentCof, mainCof, arrowCof, resizeOberverCof, null, null, stopperFactorCof);
 
     sliderCoffee.getMargin();
     sliderCoffee.getUnactiveElts();
@@ -226,6 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sliderCoffee.initArrowsBtns();
     sliderCoffee.initDrag();
     sliderCoffee.contextMenu();
+    sliderCoffee.observer();
 
 
 
@@ -234,8 +268,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const arrowCom = [...document.querySelectorAll(".combo__toggle-btn")];
     const contentCom = [...document.querySelectorAll(".combo__item")];
     const mainCom = document.querySelector(".combo__body-wrapper");
-    const stopperFactorCom = 4;
-    const sliderCombo = new Slider(contentCom, mainCom, arrowCom, null, null, stopperFactorCom);
+    const resizeOberverCom = document.querySelector(".combo__resizeOberver");
+    const stopperFactorCom = 0;
+    const sliderCombo = new Slider(contentCom, mainCom, arrowCom, resizeOberverCom, null, null, stopperFactorCom);
 
     sliderCombo.getMargin();
     sliderCombo.getUnactiveElts();
@@ -243,6 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sliderCombo.initArrowsBtns();
     sliderCombo.initDrag();
     sliderCombo.contextMenu();
+    sliderCombo.observer();
 
 
 
@@ -252,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainGif = document.querySelector(".giftset__body");
     const toggleBtnGif = [...document.querySelectorAll(".togglers__item")];
     const toggleMoveGif = document.querySelector(".togglers__item-move");
-    const sliderGiftset = new Slider(contentGif, mainGif, null, toggleBtnGif, toggleMoveGif, null);
+    const sliderGiftset = new Slider(contentGif, mainGif, null, null, toggleBtnGif, toggleMoveGif, null);
 
     sliderGiftset.getMargin();
     sliderGiftset.getTranslateStepX();

@@ -17,16 +17,32 @@
     @include flexbox(row, space-between, space-between);
   }
 
+  &__resizeOberver {
+    width: 2000px;
+    position: absolute;
+    visibility: hidden;
+  }
+
   &__item {
-    min-width: 30%;
+    min-width: 33.333%;
+  }
+
+  @media (max-width: 1200px) {
+    &__item {
+      min-width: 50% !important;
+    }
+    &__resizeOberver {
+      width: 4px;
+    }
   }
 }
 
 .item-combo {
+  /*   transition: all 0.3s ease-in-out;
+  margin-left: rem(29px); */
+  margin-left: rem(30px);
+  height: 100%;
   transition: all 0.3s ease-in-out;
-  margin-left: rem(29px);
-  /*  &__wrapper {
-  } */
   &:hover {
     filter: drop-shadow(rem(0px) rem(4px) rem(24px) rgba(205, 205, 205, 0.5));
   }

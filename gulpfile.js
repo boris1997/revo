@@ -180,7 +180,7 @@ function clean(params) {
  */
 /* function cb() { } */
 
-let build = gulp.series(clean, gulp.parallel(js, css, html, images, fontsWoff /* fontsWoff2 *//* ), */ /* fontsStyle */));
+let build = gulp.series(clean, gulp.parallel(html, css, js, images, fontsWoff /* fontsWoff2 *//* ), */ /* fontsStyle */));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 /* 
 exports.fontsStyle = fontsStyle; */

@@ -17,11 +17,22 @@
   &__item {
     min-width: 50.2%;
   }
-  /*   @media (max-width: 1200px) {
+
+  &__resizeOberver {
+    width: 5px;
+    position: absolute;
+    visibility: hidden;
+  }
+
+  @media (max-width: 1200px) {
     &__item {
       min-width: 100% !important;
     }
-  } */
+
+    &__resizeOberver {
+      width: 4px;
+    }
+  }
 }
 
 .item-coffee {
