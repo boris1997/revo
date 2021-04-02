@@ -7,6 +7,16 @@
   margin: 0;
   border: 0;
 }
+@media (max-width: 768px) {
+  * {
+    font-size: rem(14px);
+  }
+}
+/* @media (max-width: 650px) {
+  * {
+    font-size: rem(13px);
+  }
+} */
 *,
 *:before,
 *:after {
@@ -33,7 +43,6 @@ body {
   height: 100%;
   width: 100%;
   background-color: #f9fbff;
-  font-size: rem(16px);
   line-height: 1;
   font-family: "Nunito";
 }
@@ -83,13 +92,13 @@ h2 {
 
 .container-md {
   overflow: visible;
-  max-width: rem(1138px);
+  max-width: rem(1132px);
 }
 
 .page {
   &__title {
     margin-top: rem(88px);
-    margin-bottom: rem(72px);
+    margin-bottom: rem(85px);
     line-height: rem(34px);
     font-size: rem(30px);
     height: rem(64px);
@@ -108,8 +117,6 @@ h2 {
 }
 
 .section {
-  /*  padding-top: rem(87px);
-  padding-bottom: rem(128px); */
   position: relative;
   &::after {
     @include position(absolute, "", 0, 0, 0, auto, auto);
@@ -118,11 +125,8 @@ h2 {
     z-index: -1;
   }
   &__body {
-    margin-bottom: rem(127px);
+    margin-bottom: rem(140px);
   }
-  /*   &::after {
-    @include position(absolute, "", 0, 0, 0, 0, "");
-  } */
 }
 
 .item {
@@ -132,16 +136,30 @@ h2 {
     font-size: rem(24px);
     font-weight: 700;
     color: #232c38;
+    margin-top: rem(8px);
   }
   &__text {
     line-height: rem(20px);
     font-weight: 300;
     color: $darkGrey;
+    margin-top: rem(10px);
   }
   &__price {
     font-size: rem(20px);
     line-height: rem(24px);
     font-weight: 600;
     color: $accentColor;
+  }
+
+  @media (max-width: 540px) {
+    &__price {
+      line-height: rem(20px);
+      font-size: rem(16px);
+    }
+
+    &__title {
+      line-height: rem(24px);
+      font-size: rem(20px);
+    }
   }
 }

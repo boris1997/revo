@@ -13,7 +13,7 @@ class Slider {
             this.startPos = 0,
             this.translateStepX = 0,
             this.currentTranslationX = 0,
-            this.currentTranslationY,
+            this.currentTranslationMove,
             this.margin = 0,
             this.elemntsMargins = 0,
             this.prevTranslation = 0,
@@ -23,36 +23,9 @@ class Slider {
     }
 
 
-    observerCallback = (entries) => {
 
-        // Настройка слайдера после изменения ширина слайда(в процентом соотношении)
-        this.getTranslateStepX(); // Узнаем шаг для X транслэйта
-        this.setPrevTranslation(); // Устанавливаем предыдущий транслэйт
-        this.getMainToContentIndex() // Узнаем насколько могут переполнятся элементы с контейнера слайдера, берется как отношенее элеметов в контецнера слайдера к общему количеству элементов в слайдере
-        this.currentIndex > this.getMainToContentIndex() && this.currentIndex--; // Уменьшаем индекс при переполнении
-        this.setCurrentXTranslation(); // Устанавливаем текущий транслэйт
-        this.changeArrowActivity(); // Изменяем активность кнопопок
-        this.setSliderPositionX(this.main); // Устанавливаем транслэйт для слайдера
-        this.getUnactiveElts(); // меняем опасити элементов 
 
-    }
-
-    observer = () => {
-
-        // resizeInteraction событие, которое срабатывает при измненнении ширины элемента(1 раз)
-        this.resizer = new ResizeObserver(this.observerCallback);
-        this.resizer.observe(this.resizeOberver)
-    }
-
-    getMainToContentIndex = () => this.content.length - ((this.absToPercent(this.main.clientWidth, this.getTotalElementsWidth()).toFixed() / 100) * this.content.length).toFixed()
-
-    contextMenu = () => {
-        window.oncontextmenu = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            return false
-        }
-    }
+    /*                                                ТАЧ СОБЫТИЕ                                             */
 
     initDrag = () => {
         this.content.map((dragableItem, i) => {
@@ -74,15 +47,50 @@ class Slider {
         })
     }
 
+
+    contextMenu = () => {
+        window.oncontextmenu = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            return false
+        }
+    }
+
+
+    animation = () => {
+        // анимация если драг активен
+        this.setSliderPositionX(this.main, this.currentTranslationX);
+        if (this.isDragging) requestAnimationFrame(this.animation)
+    }
+
+
     touchStart = (i) => {
 
         // Начало тач события 
         return (event) => {
 
-            this.main.classList.remove('carousel__content--smooth');  // удаляем плавность при движении, чтобы не было задержек
-            this.startPos = this.getPositionX(event); // узнаем стартовую позицию мыши
-            this.isDragging = true; // инициализируем перетаскивание
+            this.main.classList.remove('carousel__content--smooth'); // удаляем плавность при движении, чтобы не было задержек
+            this.startPos = this.getPositionX(event);                // узнаем стартовую позицию мыши
+            this.isDragging = true;                                  // инициализируем перетаскивание
             this.animationID = requestAnimationFrame(this.animation) // запускаем анимацию
+        }
+    }
+
+
+    touchMove = (e) => {
+
+        // тач событие
+
+        if (this.isDragging) { // если драг активен
+
+            let currentPosition = this.getPositionX(e); // узнаем  позицию мыши
+            // останавливаем транслэйт при выходе из контейнера 
+
+            console.log(((this.translateStepX * this.content.length) + this.elemntsMargins).toFixed());
+            console.log((Math.abs(this.currentTranslationX) + 100).toFixed());
+            if ((Math.abs(this.currentTranslationX) + 100).toFixed() <= ((this.translateStepX * this.content.length) + this.elemntsMargins).toFixed() && this.currentTranslationX < 2) {
+                this.currentTranslationX = this.absToPercent(((this.prevTranslation * this.main.clientWidth / 100) + currentPosition - this.startPos), this.main.clientWidth);
+            }
         }
     }
 
@@ -91,8 +99,8 @@ class Slider {
         // Остановка тач события
 
 
-        cancelAnimationFrame(this.animationID)  // отмена анимацию
-        this.isDragging = false; // отсановка перетаскивания
+        cancelAnimationFrame(this.animationID)                 // отмена анимацию
+        this.isDragging = false;                               // отсановка перетаскивания
         this.main.classList.add('carousel__content--smooth');  // возвращаем плавность для событий на клик стрелки 
 
         // Изменям индекс в зависимости от текущей трансформации
@@ -107,42 +115,14 @@ class Slider {
         this.setPrevTranslation();            // Устанавливаем предыдущий транслэйте
         this.setCurrentXTranslation();        // Устанавливаем текущий транслэйте
         this.changeArrowActivity();           // Изменяем активность кнопопк
-        this.setSliderPositionX(this.main);   // Устанавливаем транслэйт для слайдера
+        this.setSliderPositionX(this.main, this.currentTranslationX);   // Устанавливаем транслэйт для слайдера
         this.getUnactiveElts();               // меняем опасити элементов 
     }
 
-    touchMove = (e) => {
-
-        // тач событие
-
-        if (this.isDragging) { // если драг активен
-
-            let currentPosition = this.getPositionX(e); // узнаем  позицию мыши
-            // останавливаем транслэйт при выходе из контейнера 
-            /*   console.log(this.prevTranslation)
-              console.log(this.currentTranslationX)
-              console.log(this.elemntsMargins)
-              console.log(this.translateStepX) */
-            if (Math.abs(this.currentTranslationX) + 100 <= (this.translateStepX * this.content.length) + this.elemntsMargins && this.currentTranslationX < 2) {
-                (this.currentTranslationX = ((this.prevTranslation * this.main.clientWidth / 100) + currentPosition - this.startPos) / this.main.clientWidth * 100);
-            }
-        }
-    }
-    animation = () => {
-        // анимация если драг активен
-        this.setSliderPositionX(this.main);
-        if (this.isDragging) requestAnimationFrame(this.animation)
-    }
-
-    setSliderPositionX = (element) => element.style.transform = `translateX(${this.currentTranslationX}%)` // Устанавливаем транслэйт для элемента по x координате
-
-    setSliderPositionY = (element) => element.style.transform = `translateY(${-this.currentTranslationY}%)` // Устанавливаем транслэйт для элемента по y координате
 
 
-    getPositionX = (event) => event.type.includes('mouse') ? event.pageX : event.touches[0].clientX; // Позиция мыши/пальца
 
-    absToPercent = (absolute, container) => absolute / container * 100  // Перевод в проценты
-
+    /*                                                СОБЫТИЕ НА КЛИК СТРЕЛОК                                             */
 
     initArrowsBtns = () => {
         this.arrow[0].addEventListener("click", () => this.left()); // левая стрелка
@@ -150,28 +130,14 @@ class Slider {
         this.arrow[1].addEventListener("click", () => this.rigth()); // праввая стрелка
     }
 
-    initToggleBtns = () => {
-
-        this.toggleBtn.map((item, i) => item.addEventListener("click", () => {
-            this.currentIndex = i;
-            this.setCurrentXTranslation();// Меняем текущий транслэйт слайдер 
-            this.setSliderPositionX(this.main);  // Устанавливаем транслэйт для слайдера
-            this.setCurrentYTranslation();// Меняем текущий транслэйт движущегося элемента
-            this.setSliderPositionY(this.toggleMoveGif);// Устанавливаем транслэйт для движущегося элемента
-            this.setSlideNumber(this.toggleMoveGif)// Устанавливаем номер слайда
-        }))
-    }
-
-    setSlideNumber = (elem) => elem.textContent = this.currentIndex + 1  // Устанавливаем номер слайда
-
     rigth = () => {
-        if (Math.abs(this.currentTranslationX) * 2 + 100 <= (this.translateStepX * this.content.length) + this.elemntsMargins) {
+        if (this.currentIndex < this.getMainToContentIndex()) {
             this.currentIndex++;
-            this.setPrevTranslation();  // Устанавливаем предыдущий транслэйт
-            this.setCurrentXTranslation();  // Устанавливаем текущий транслэйт
-            this.changeArrowActivity();  // Изменяем активность кнопопк
-            this.setSliderPositionX(this.main);// Устанавливаем транслэйт для слайдера
-            this.getUnactiveElts();  // меняем опасити элементов 
+            this.setPrevTranslation();            // Устанавливаем предыдущий транслэйт
+            this.setCurrentXTranslation();        // Устанавливаем текущий транслэйт
+            this.changeArrowActivity();           // Изменяем активность кнопопк
+            this.setSliderPositionX(this.main, this.currentTranslationX);   // Устанавливаем транслэйт для слайдера
+            this.getUnactiveElts();               // меняем опасити элементов 
         }
 
     }
@@ -180,48 +146,154 @@ class Slider {
     left = () => {
         if (Math.abs(this.currentTranslationX) > 0) {
             this.currentIndex--
-            this.setPrevTranslation();      // Устанавливаем предыдущий транслэйт
-            this.setCurrentXTranslation();  // Устанавливаем текущий транслэйт
-            this.changeArrowActivity();  // Изменяем активность кнопопк
-            this.setSliderPositionX(this.main);// Устанавливаем транслэйт для слайдера
-            this.getUnactiveElts();  // меняем опасити элементов 
+            this.setPrevTranslation();            // Устанавливаем предыдущий транслэйт
+            this.setCurrentXTranslation();        // Устанавливаем текущий транслэйт
+            this.changeArrowActivity();           // Изменяем активность кнопопк
+            this.setSliderPositionX(this.main, this.currentTranslationX);   // Устанавливаем транслэйт для слайдера
+            this.getUnactiveElts();               // меняем опасити элементов 
         }
     }
+
+
+
+
+    /*                                                СОБЫТИЕ НА КЛИК КНОПОК                                         */
+
+    initToggleBtns = () => {
+        this.toggleBtn.map((item, i) => item.addEventListener("click", () => {
+            console.log(this.toggleBtn[0].parentElement)
+            const direction = window.getComputedStyle(this.toggleBtn[0].parentElement).flexDirection;
+            this.currentIndex = i;
+            this.setCurrentXTranslation();                                  // Меняем текущий транслэйт слайдер 
+            this.setSliderPositionX(this.main, this.currentTranslationX);                                 // Устанавливаем транслэйт для слайдера
+            console.log(this.currentTranslationX)
+            this.setCurrentYTranslation();
+            this.setSliderPositionY(this.toggleMoveGif);
+            this.setSlideNumber(this.toggleMoveGif)
+            // if (direction === 'column') {
+            //     this.currentIndex = i;
+
+            //     this.setCurrentYTranslation();                  // Меняем текущий транслэйт движущегося элемента
+            //     this.setSliderPositionY(this.toggleMoveGif);    // Устанавливаем транслэйт для движущегося элемента
+            //     this.setSlideNumber(this.toggleMoveGif)         // Устанавливаем номер слайда
+            // } else {
+
+            // }
+        }))
+    }
+
+
+
+    /*                                                ОБЩИЕ МЕТОДЫ                                         */
+
+
+    /*                                                СМЕНА АКТИВНОСТИ СТРЕЛОК                                        */
 
     changeArrowActivity = () => {
 
         // меняем активность стрелок
-        Math.abs(this.currentTranslationX) > 0 ? (this.arrow[0].classList.contains('carousel__toggle-btn--unactive') && this.arrow[0].classList.remove('carousel__toggle-btn--unactive')) : this.arrow[0].classList.add('carousel__toggle-btn--unactive');
-        if (Math.abs(this.currentTranslationX) + Math.abs(this.currentTranslationX) + 100 >= (this.translateStepX * this.content.length) + this.elemntsMargins) {
+
+        console.log(Math.abs(this.currentTranslationX))
+        // Левая стрелка
+        if (Math.abs(this.currentTranslationX) > 0) {
+            this.arrow[0].classList.contains('carousel__toggle-btn--unactive') && this.arrow[0].classList.remove('carousel__toggle-btn--unactive')
+        } else {
+            !this.arrow[0].classList.contains('carousel__toggle-btn--unactive') && this.arrow[0].classList.add('carousel__toggle-btn--unactive');
+        }
+
+
+        // Правая стрелка
+        if (this.currentIndex === this.getMainToContentIndex()) {
             this.arrow[1].classList.add('carousel__toggle-btn--unactive');
         } else {
             this.arrow[1].classList.remove('carousel__toggle-btn--unactive');
-
         }
     }
 
-    setPrevTranslation = () => this.prevTranslation = (this.currentIndex * -(this.content[0].clientWidth + this.margin)) / this.main.clientWidth * 100;// Устанавливаем предыдущий трансл
 
 
-    setCurrentXTranslation = () => this.currentTranslationX = (this.currentIndex) * -this.translateStepX; //Меняем текущий X транслэйт
 
-    setCurrentYTranslation = () => this.currentTranslationY = (this.currentIndex) * -this.translateStepY; //Меняем текущий Y транслэйт
-
+    /*                                                МЕНЯЕМ ПРОЗРАЧНОСТЬ ВЫПАДАЮЩИХ ЭЛЕМЕНТОВ                                      */
 
     getUnactiveElts = () => this.content.map((item, i) => {
         // меняем опасити элементов 
-        const translationtoAbs = parseFloat((Math.abs(this.currentTranslationX) * this.main.clientWidth / 100).toFixed());
-        /*       console.log(translationtoAbs, this.margin, item.offsetLeft, this.currentIndex);
-              console.log(item.clientWidth)
-              console.log(this.main.clientWidth) */
+        const translationtoAbs = this.percentToAbsolute(Math.abs(this.currentTranslationX), this.main.clientWidth).toFixed();
         if (this.main.clientWidth <= ((item.offsetLeft + this.margin + i) - translationtoAbs) || item.offsetLeft + i - translationtoAbs < 0) {
-            console.log('ok')
             item.classList.add('carousel__item--unActive')
         } else {
             (item.classList.contains('carousel__item--unActive') && item.classList.remove('carousel__item--unActive'))
         }
 
     })
+
+
+
+
+    /*                                                resizeObserver API                                     */
+
+
+    observerCallback = (entries) => {
+
+        // Настройка слайдера после изменения ширина слайда(в процентом соотношении)
+        this.getTranslateStepX(); // Узнаем шаг для X транслэйта
+
+        // Уменьшаем индекс при переполнении
+        if (this.currentIndex > this.getMainToContentIndex()) {
+            const decresseIndex = this.currentIndex - this.getMainToContentIndex();
+            this.currentIndex -= decresseIndex;
+        }
+        console.log(this.currentIndex)
+        this.setPrevTranslation();           // Устанавливаем предыдущий транслэйт
+        this.getMainToContentIndex()         // Узнаем насколько могут переполнятся элементы с контейнера слайдера, берется как отношенее элеметов в контецнера слайдера к общему количеству элементов в слайдере
+        this.setCurrentXTranslation();       // Устанавливаем текущий транслэйт
+        this.changeArrowActivity();          // Изменяем активность кнопопок
+        this.setSliderPositionX(this.main, this.currentTranslationX);  // Устанавливаем транслэйт для слайдера
+        this.getUnactiveElts();              // меняем опасити элементов 
+
+    }
+
+    observer = () => {
+
+        // resizeInteraction событие, которое срабатывает при измненнении ширины элемента
+        this.resizer = new ResizeObserver(this.observerCallback);
+        this.resizer.observe(this.resizeOberver)
+    }
+
+
+
+
+    /*                                               ТЕХНИЧЕСКИЕ МЕТОДЫ                                  */
+
+
+
+    getMainToContentIndex = () => this.content.length - ((this.absToPercent(this.main.clientWidth, this.getTotalElementsWidth()).toFixed() / 100) * this.content.length).toFixed()  // индекс отношения контэйнера слайдера к его контентой части
+
+
+    setSliderPositionX = (element, translation) => element.style.transform = `translateX(${translation}%)`  // Устанавливаем транслэйт для элемента по x координате
+
+    setSliderPositionY = (element, translation) => element.style.transform = `translateY(${-this.currentTranslationMove}%)` // Устанавливаем транслэйт для элемента по y координате
+
+
+    getPositionX = (event) => event.type.includes('mouse') ? event.pageX : event.touches[0].clientX; // Позиция мыши/пальца
+
+
+    // Переводы чисел
+
+    absToPercent = (absolute, container) => absolute / container * 100  // Перевод в проценты
+
+    percentToAbsolute = (percent, container) => percent / 100 * container  // Перевод в абсолюбное значение
+
+
+    setSlideNumber = (elem) => elem.textContent = this.currentIndex + 1  // Устанавливаем номер слайда
+
+
+    setPrevTranslation = () => this.prevTranslation = this.currentIndex * - this.absToPercent(this.content[0].clientWidth + this.margin, this.main.clientWidth);// Устанавливаем предыдущий трансл
+
+
+    setCurrentXTranslation = () => this.currentTranslationX = (this.currentIndex) * -this.translateStepX; //Меняем текущий X транслэйт
+
+    setCurrentYTranslation = () => this.currentTranslationMove = (this.currentIndex) * -this.translateStepMoveObg; //Меняем текущий Y транслэйт
+
 
     getMargin = () => {
         // Узнаем отутупы для правельного транслэйта
@@ -233,7 +305,7 @@ class Slider {
     getTranslateStepX = () => this.translateStepX = (this.content[0].clientWidth + this.margin) / this.main.clientWidth * 100  // Узнаем шаг для X транслэйта
 
 
-    getTranslateStepY = () => this.translateStepY = 100; // Узнаем шаг для Y транслэйта
+    getTranslateStepMoveObg = () => this.translateStepMoveObg = 100; // Узнаем шаг для Y транслэйта
 
 
     getTotalElementsWidth = () => (this.content[0].clientWidth + this.margin) * this.content.length // Узнаем общую ширину для всех эелементов слайдера
@@ -249,9 +321,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentCof = [...document.querySelectorAll(".coffee__item")];
     const mainCof = document.querySelector(".coffee__body-wrapper");
     const resizeOberverCof = document.querySelector(".coffee__resizeOberver");
-    const stopperFactorCof = 0;
 
-    const sliderCoffee = new Slider(contentCof, mainCof, arrowCof, resizeOberverCof, null, null, stopperFactorCof);
+    const sliderCoffee = new Slider(contentCof, mainCof, arrowCof, resizeOberverCof, null, null, 0);
 
     sliderCoffee.getMargin();
     sliderCoffee.getUnactiveElts();
@@ -269,8 +340,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentCom = [...document.querySelectorAll(".combo__item")];
     const mainCom = document.querySelector(".combo__body-wrapper");
     const resizeOberverCom = document.querySelector(".combo__resizeOberver");
-    const stopperFactorCom = 0;
-    const sliderCombo = new Slider(contentCom, mainCom, arrowCom, resizeOberverCom, null, null, stopperFactorCom);
+
+    const sliderCombo = new Slider(contentCom, mainCom, arrowCom, resizeOberverCom, null, null, 0);
 
     sliderCombo.getMargin();
     sliderCombo.getUnactiveElts();
@@ -292,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sliderGiftset.getMargin();
     sliderGiftset.getTranslateStepX();
-    sliderGiftset.getTranslateStepY(toggleMoveGif, mainGif);
+    sliderGiftset.getTranslateStepMoveObg();
     sliderGiftset.initToggleBtns();
 
 })

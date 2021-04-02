@@ -24,10 +24,11 @@
   }
 
   &__item {
+    /*     aspect-ratio: 3/3; */
     min-width: 33.333%;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1028px) {
     &__item {
       min-width: 50% !important;
     }
@@ -35,11 +36,41 @@
       width: 4px;
     }
   }
+
+  @media (max-width: 650px) {
+    &__header {
+      flex: 1;
+    }
+    &__body {
+      padding: 0 rem(80px);
+      padding-right: calc(80 / 650 * 100%);
+      padding-left: calc(51 / 650 * 100%);
+    }
+    &__resizeOberver {
+      width: 3px;
+    }
+    &__item {
+      min-width: 100% !important;
+    }
+  }
+
+  @media (max-width: 540px) {
+  }
+
+  // @media (max-width: 768px) {
+  //   &__item * :not(.btn__buy) {
+  //     font-size: 15px;
+  //   }
+  //   /*     &__item {
+  //     min-width: 50% !important;
+  //   }
+  //   &__resizeOberver {
+  //     width: 4px;
+  //   } */
+  // }
 }
 
 .item-combo {
-  /*   transition: all 0.3s ease-in-out;
-  margin-left: rem(29px); */
   margin-left: rem(30px);
   height: 100%;
   transition: all 0.3s ease-in-out;
@@ -52,20 +83,25 @@
     width: 100%;
   }
 
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
   &__body {
-    padding: rem(42px);
     background-color: #fff;
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
     flex: 1;
+    padding: 0 rem(15px);
   }
 
-  &__title {
-    margin-top: rem(8px);
-  }
-  &__text {
-    margin-top: rem(10px);
+  &__body-wrapper {
+    /*   margin: max($numbers: rem(42px)); */
+    max-width: rem(276px);
+    height: 100%;
+    margin: rem(42px) auto;
   }
 
   &__btn {
@@ -73,6 +109,7 @@
     margin-top: rem(32px);
     @include flexbox(row, space-between, space-between);
   }
+
   &__prices {
     @include flexbox(row, flex-start, center);
   }
@@ -82,10 +119,28 @@
     color: $primaryColor;
     margin-left: rem(16px);
   }
+  @media (max-width: 650px) {
+    flex-direction: row;
+    &__body-wrapper {
+      margin: auto;
+      padding: rem(20px) 0;
+    }
+  }
+  @media (max-width: 540px) {
+    flex-direction: column;
+    &__img {
+      width: 80%;
+      margin: auto;
+      display: block;
+    }
+  }
 }
 
 .btn-combo {
   &__more {
     width: rem(88px);
+    @media (max-width: 768px) {
+      font-size: rem(10px) !important;
+    }
   }
 }

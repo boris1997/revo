@@ -4,6 +4,7 @@
       background-color: $lightGrey;
       width: rem(1076px);
     }
+    padding: 0 rem(100px);
   }
 
   &__slider {
@@ -20,7 +21,7 @@
   &__decoration {
     @include position(absolute, "", 0, 0, 0, auto, auto);
     height: 100.5%;
-    width: rem(257px);
+    width: calc(256 / 475 * 100%);
     background-color: $lightGrey;
     z-index: -1;
   }
@@ -28,6 +29,7 @@
   &__img {
     z-index: 0;
     margin-top: rem(51px);
+    width: 100%;
   }
   &__body {
     @include flexbox(row, "", space-between);
@@ -44,11 +46,38 @@
 
   &__item {
     align-items: flex-start;
-    margin-left: rem(64px);
+    margin-left: calc(64 / 1032 * 100%);
+  }
+  @media (max-width: 1024px) {
+    &__section {
+      padding: calc(100 / 1024 * 100%);
+    }
+    &__decoration {
+      display: none;
+    }
+    &__body-wrapper {
+      flex-direction: column;
+    }
+    &__img {
+      width: 55%;
+    }
+    &__item {
+      align-items: center;
+      margin: 0;
+    }
+  }
+  @media (max-width: 767px) {
+    &__slider {
+      flex-direction: column;
+      padding-right: 0;
+    }
   }
 }
 
 .item-giftset {
+  &__wrapper {
+    margin: rem(20px) 0;
+  }
   &__text {
     max-width: rem(430px);
   }
@@ -95,6 +124,7 @@
 
 .togglers {
   min-width: 88px;
+
   border-top: rem(2px) solid $lightGrey;
   border-bottom: rem(1px) solid $lightGrey;
   z-index: 2;
@@ -107,14 +137,15 @@
     @include flexbox(column, center, center);
     cursor: pointer;
     flex: 1;
+    width: 100%;
 
     background: #f5f8fc;
-    font-size: rem(30px);
     box-shadow: inset 10px 0px 10px -10px rgb(205 205 205 / 50%);
     font-family: "Montserrat";
   }
 
   &__amount {
+    font-size: rem(30px);
     font-family: "Montserrat";
     font-weight: 900;
     color: $primaryColor;
@@ -138,5 +169,18 @@
   }
   &__item-move > &__amount {
     opacity: 1;
+  }
+
+  @media (max-width: 767px) {
+    flex-direction: row;
+    height: rem(60px);
+    &__item-move,
+    &__item {
+      width: 33.33333%;
+      height: 100%;
+    }
+    /*   &__item-move {
+      transform: rotate(-90deg);
+    } */
   }
 }

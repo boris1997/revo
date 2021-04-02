@@ -9,6 +9,7 @@
     background-color: transparent;
     color: $primaryColor;
     height: rem(32px);
+    font-weight: 600;
   }
   &__buy {
     background-color: $accentColor;
@@ -16,8 +17,23 @@
     width: rem(134px);
     height: rem(32px);
     color: #f9fbff;
+    font-weight: 600;
   }
-  //size
+
+  @media (max-width: 650px) {
+    &__more,
+    &__buy {
+      height: rem(24px);
+      font-size: rem(14px) !important;
+    }
+  }
+  @media (max-width: 540px) {
+    &__more,
+    &__buy {
+      width: rem(100px);
+      font-size: rem(12px) !important;
+    }
+  }
   &__md {
     width: rem(144px);
     height: rem(40px);
@@ -27,8 +43,6 @@
     width: rem(257px);
     height: rem(60px);
   }
-
-  //type
 
   &__circle {
     position: relative;
@@ -68,47 +82,3 @@
     }
   }
 }
-
-/* &__call-to-action {
-  background: transparent;
-  position: relative;
-  cursor: pointer;
-}
-
-&__call-to-action-inner {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 101.5%;
-  height: 102.5%;
-}
-
-&__call-to-action-inner-content {
-  height: 100%;
-  position: relative;
-  @include flexbox(row, center, center);
-  transition: color 0.45s 0.1s ease-out;
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    border-radius: 50%;
-    display: block;
-    text-align: center;
-    transition: box-shadow 0.5s ease-out;
-    z-index: -1;
-    box-sizing: border-box;
-  }
-}
-&__call-to-action:focus {
-  outline: none;
-}
- */

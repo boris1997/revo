@@ -1,6 +1,5 @@
 .header {
-  height: rem(768px); /* 
-  padding-left: rem(134px); */
+  height: rem(768px);
   &__body {
     height: 100%;
     @include flexbox(row, "", "");
@@ -21,13 +20,15 @@
     line-height: rem(70px);
     font-weight: 900;
     z-index: 10;
-    max-width: rem(470px);
+    max-width: rem(484px);
   }
 
   &__title-accent {
     background-color: $accentColor;
     color: #f9fbff;
     padding: 0 rem(16px);
+    width: 100%;
+    display: inline-block;
   }
 
   &__title-span {
@@ -58,9 +59,6 @@
       height: 100%;
       z-index: 1;
     }
-    /*    &__img {
-      @include position(absolute, "", auto, 0, 0, 0, auto);
-    } */
   }
 
   &__play-btn {
@@ -76,7 +74,7 @@
 }
 
 .sidebar {
-  padding-left: rem(56px);
+  padding-left: rem(48px);
   width: rem(327px);
   background-color: $primaryColor;
   @include flexbox(column, "", flex-start);
@@ -107,7 +105,7 @@
     @include flexbox(column, space-between, flex-start);
   }
   &__item:not(:first-child) {
-    margin-top: rem(30px);
+    margin-top: rem(25px);
   }
   &__link--active {
     font-weight: 600 !important;
