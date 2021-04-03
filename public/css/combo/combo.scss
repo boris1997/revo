@@ -55,6 +55,11 @@
   }
 
   @media (max-width: 540px) {
+    &__body {
+      padding: 0 rem(80px);
+      padding-right: calc(100 / 650 * 100%);
+      padding-left: calc(71 / 650 * 100%);
+    }
   }
 
   // @media (max-width: 768px) {
@@ -71,7 +76,7 @@
 }
 
 .item-combo {
-  margin-left: rem(30px);
+  margin-left: rem(29px);
   height: 100%;
   transition: all 0.3s ease-in-out;
   &:hover {
@@ -120,6 +125,7 @@
     margin-left: rem(16px);
   }
   @media (max-width: 650px) {
+    margin-left: calc(29 / 650 * 100%);
     flex-direction: row;
     &__body-wrapper {
       margin: auto;
@@ -129,7 +135,7 @@
   @media (max-width: 540px) {
     flex-direction: column;
     &__img {
-      width: 80%;
+      width: 65%;
       margin: auto;
       display: block;
     }

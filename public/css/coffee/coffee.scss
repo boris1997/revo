@@ -46,6 +46,11 @@
     }
   }
   @media (max-width: 540px) {
+    &__body {
+      padding: 0 rem(80px);
+      padding-right: calc(50 / 650 * 100%);
+      padding-left: calc(21 / 650 * 100%);
+    }
   }
 }
 
@@ -98,6 +103,7 @@
     }
   }
   @media (max-width: 650px) {
+    margin-left: calc(29 / 650 * 100%);
     &__left {
       width: 78%;
     }
@@ -106,11 +112,10 @@
       font-size: rem(20px);
     } */
   }
-
-  @media (max-width: 767px) {
-    /*     &__right {
-      height: rem(130px);
-    } */
+  @media (max-width: 540px) {
+    &__right {
+      width: 60%;
+    }
   }
 }
 

@@ -1,13 +1,15 @@
 class Slider {
 
-    constructor(content, main, arrow, resizeOberver, toggleBtn, toggleMoveGif, stopperFactor) {
+    constructor(content, main, arrow, slideResizeOberverObj, toggleBtn, toggleMoveGif, stopperFactor, slideNumber, toggleResizeOberverObj) {
 
         this.content = content,
             this.main = main,
             this.arrow = arrow,
-            this.resizeOberver = resizeOberver,
+            this.slideResizeOberverObj = slideResizeOberverObj,
+            this.toggleResizeOberverObj = toggleResizeOberverObj,
             this.toggleBtn = toggleBtn,
             this.toggleMoveGif = toggleMoveGif,
+            this.slideNumber = slideNumber,
             this.isDragging = false,
             this.currentIndex = 0,
             this.startPos = 0,
@@ -18,8 +20,8 @@ class Slider {
             this.elemntsMargins = 0,
             this.prevTranslation = 0,
             this.animationID = 0,
-            this.stopperFactor = stopperFactor;
-        this.oserver = null;
+            this.stopperFactor = stopperFactor,
+            this.oserver = null;
     }
 
 
@@ -99,9 +101,9 @@ class Slider {
         // Остановка тач события
 
 
-        cancelAnimationFrame(this.animationID)                 // отмена анимацию
-        this.isDragging = false;                               // отсановка перетаскивания
-        this.main.classList.add('carousel__content--smooth');  // возвращаем плавность для событий на клик стрелки 
+        cancelAnimationFrame(this.animationID)                          // отмена анимацию
+        this.isDragging = false;                                        // отсановка перетаскивания
+        this.main.classList.add('carousel__content--smooth');           // возвращаем плавность для событий на клик стрелки 
 
         // Изменям индекс в зависимости от текущей трансформации
         if (this.currentIndex < this.content.length) {
@@ -112,11 +114,11 @@ class Slider {
         }
 
 
-        this.setPrevTranslation();            // Устанавливаем предыдущий транслэйте
-        this.setCurrentXTranslation();        // Устанавливаем текущий транслэйте
-        this.changeArrowActivity();           // Изменяем активность кнопопк
+        this.setPrevTranslation();                                      // Устанавливаем предыдущий транслэйте
+        this.setCurrentXTranslation();                                  // Устанавливаем текущий транслэйте
+        this.changeArrowActivity();                                     // Изменяем активность кнопопк
         this.setSliderPositionX(this.main, this.currentTranslationX);   // Устанавливаем транслэйт для слайдера
-        this.getUnactiveElts();               // меняем опасити элементов 
+        this.getUnactiveElts();                                         // меняем опасити элементов 
     }
 
 
@@ -161,26 +163,23 @@ class Slider {
 
     initToggleBtns = () => {
         this.toggleBtn.map((item, i) => item.addEventListener("click", () => {
-            console.log(this.toggleBtn[0].parentElement)
-            const direction = window.getComputedStyle(this.toggleBtn[0].parentElement).flexDirection;
+            !this.toggleMoveGif.classList.contains('togglers__item-move--smooth') && this.toggleClasses(this.toggleMoveGif, 'togglers__item-move--smooth')
             this.currentIndex = i;
             this.setCurrentXTranslation();                                  // Меняем текущий транслэйт слайдер 
-            this.setSliderPositionX(this.main, this.currentTranslationX);                                 // Устанавливаем транслэйт для слайдера
-            console.log(this.currentTranslationX)
-            this.setCurrentYTranslation();
-            this.setSliderPositionY(this.toggleMoveGif);
-            this.setSlideNumber(this.toggleMoveGif)
-            // if (direction === 'column') {
-            //     this.currentIndex = i;
-
-            //     this.setCurrentYTranslation();                  // Меняем текущий транслэйт движущегося элемента
-            //     this.setSliderPositionY(this.toggleMoveGif);    // Устанавливаем транслэйт для движущегося элемента
-            //     this.setSlideNumber(this.toggleMoveGif)         // Устанавливаем номер слайда
-            // } else {
-
-            // }
+            this.setSliderPositionX(this.main, this.currentTranslationX);  // Устанавливаем транслэйт для слайдера
+            this.setSlideNumber(this.slideNumber)
+            if (this.direction() === 'column') {
+                this.setSliderPositionY(this.toggleMoveGif, this.setCurrentFullBodyTranslation(100))   // Меняем текущий транслэйт движущегося элемента и станавливаем транслэйт для движущегося элемента
+            } else {
+                this.setSliderPositionX(this.toggleMoveGif, this.setCurrentFullBodyTranslation(100))
+            }
         }))
     }
+
+
+
+
+    direction = () => window.getComputedStyle(this.toggleBtn[0].parentElement).flexDirection;
 
 
 
@@ -193,7 +192,7 @@ class Slider {
 
         // меняем активность стрелок
 
-        console.log(Math.abs(this.currentTranslationX))
+        console.log(this)
         // Левая стрелка
         if (Math.abs(this.currentTranslationX) > 0) {
             this.arrow[0].classList.contains('carousel__toggle-btn--unactive') && this.arrow[0].classList.remove('carousel__toggle-btn--unactive')
@@ -232,7 +231,7 @@ class Slider {
     /*                                                resizeObserver API                                     */
 
 
-    observerCallback = (entries) => {
+    slideRzeObrCallback = (entries) => {
 
         // Настройка слайдера после изменения ширина слайда(в процентом соотношении)
         this.getTranslateStepX(); // Узнаем шаг для X транслэйта
@@ -252,17 +251,43 @@ class Slider {
 
     }
 
-    observer = () => {
+    slideResizeObserver = () => {
 
         // resizeInteraction событие, которое срабатывает при измненнении ширины элемента
-        this.resizer = new ResizeObserver(this.observerCallback);
-        this.resizer.observe(this.resizeOberver)
+        this.resizerSlide = new ResizeObserver(this.slideRzeObrCallback);
+        this.resizerSlide.observe(this.slideResizeOberverObj)
+    }
+
+    toggleContainerRzeObrCallback = () => {
+        this.toggleMoveGif.classList.contains('togglers__item-move--smooth') && this.toggleClasses(this.toggleMoveGif, 'togglers__item-move--smooth')
+        if (this.direction() === 'column') {
+            this.setSliderPositionY(this.toggleMoveGif, this.setCurrentFullBodyTranslation(100))   // Меняем текущий транслэйт движущегося элемента и станавливаем транслэйт для движущегося элемента
+        } else {
+            this.setSliderPositionX(this.toggleMoveGif, this.setCurrentFullBodyTranslation(100))
+        }
+
     }
 
 
 
 
+    toggleContainerResizeObserver = () => {
+        this.resizerToggler = new ResizeObserver(this.toggleContainerRzeObrCallback);
+        console.log(this.toggleResizeOberverObj)
+        this.resizerToggler.observe(this.toggleResizeOberverObj)
+    }
+
+
+
     /*                                               ТЕХНИЧЕСКИЕ МЕТОДЫ                                  */
+
+    toggleClasses = (element, classList) => element.classList.toggle(classList)
+
+
+
+
+    /*                                               СМЕНА КЛАССОВ                                 */
+
 
 
 
@@ -271,7 +296,7 @@ class Slider {
 
     setSliderPositionX = (element, translation) => element.style.transform = `translateX(${translation}%)`  // Устанавливаем транслэйт для элемента по x координате
 
-    setSliderPositionY = (element, translation) => element.style.transform = `translateY(${-this.currentTranslationMove}%)` // Устанавливаем транслэйт для элемента по y координате
+    setSliderPositionY = (element, translation) => element.style.transform = `translateY(${translation}%)` // Устанавливаем транслэйт для элемента по y координате
 
 
     getPositionX = (event) => event.type.includes('mouse') ? event.pageX : event.touches[0].clientX; // Позиция мыши/пальца
@@ -292,7 +317,7 @@ class Slider {
 
     setCurrentXTranslation = () => this.currentTranslationX = (this.currentIndex) * -this.translateStepX; //Меняем текущий X транслэйт
 
-    setCurrentYTranslation = () => this.currentTranslationMove = (this.currentIndex) * -this.translateStepMoveObg; //Меняем текущий Y транслэйт
+    setCurrentFullBodyTranslation = (translate) => (this.currentIndex) * translate; //Меняем текущий Y транслэйт
 
 
     getMargin = () => {
@@ -304,8 +329,6 @@ class Slider {
 
     getTranslateStepX = () => this.translateStepX = (this.content[0].clientWidth + this.margin) / this.main.clientWidth * 100  // Узнаем шаг для X транслэйта
 
-
-    getTranslateStepMoveObg = () => this.translateStepMoveObg = 100; // Узнаем шаг для Y транслэйта
 
 
     getTotalElementsWidth = () => (this.content[0].clientWidth + this.margin) * this.content.length // Узнаем общую ширину для всех эелементов слайдера
@@ -322,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainCof = document.querySelector(".coffee__body-wrapper");
     const resizeOberverCof = document.querySelector(".coffee__resizeOberver");
 
-    const sliderCoffee = new Slider(contentCof, mainCof, arrowCof, resizeOberverCof, null, null, 0);
+    const sliderCoffee = new Slider(contentCof, mainCof, arrowCof, resizeOberverCof, null, null, 0, null, null);
 
     sliderCoffee.getMargin();
     sliderCoffee.getUnactiveElts();
@@ -330,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sliderCoffee.initArrowsBtns();
     sliderCoffee.initDrag();
     sliderCoffee.contextMenu();
-    sliderCoffee.observer();
+    sliderCoffee.slideResizeObserver();
 
 
 
@@ -341,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainCom = document.querySelector(".combo__body-wrapper");
     const resizeOberverCom = document.querySelector(".combo__resizeOberver");
 
-    const sliderCombo = new Slider(contentCom, mainCom, arrowCom, resizeOberverCom, null, null, 0);
+    const sliderCombo = new Slider(contentCom, mainCom, arrowCom, resizeOberverCom, null, null, 0, null, null);
 
     sliderCombo.getMargin();
     sliderCombo.getUnactiveElts();
@@ -349,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sliderCombo.initArrowsBtns();
     sliderCombo.initDrag();
     sliderCombo.contextMenu();
-    sliderCombo.observer();
+    sliderCombo.slideResizeObserver();
 
 
 
@@ -359,11 +382,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainGif = document.querySelector(".giftset__body");
     const toggleBtnGif = [...document.querySelectorAll(".togglers__item")];
     const toggleMoveGif = document.querySelector(".togglers__item-move");
-    const sliderGiftset = new Slider(contentGif, mainGif, null, null, toggleBtnGif, toggleMoveGif, null);
+    const slideNumber = document.querySelector(".togglers__slide-number");
+    const toggleResizeOberverGif = document.querySelector(".togglers__resize-observer");
+    const sliderGiftset = new Slider(contentGif, mainGif, null, null, toggleBtnGif, toggleMoveGif, null, slideNumber, toggleResizeOberverGif);
 
     sliderGiftset.getMargin();
     sliderGiftset.getTranslateStepX();
-    sliderGiftset.getTranslateStepMoveObg();
     sliderGiftset.initToggleBtns();
+    sliderGiftset.toggleContainerResizeObserver();
 
 })
+
+
+/* const carousel = {
+    type: "carousel",
+    settings: {
+        customSetting: {
+            effects: "",
+            touch: "true/false",
+        },
+        switchers: {
+            dots: "true/false",
+            arrows: "true/false",
+        }
+    }
+}
+
+const slider3d = {
+    type: "3dslider",
+    settings: {
+        customSetting: {
+            effects: "rota",
+        },
+        switchers: {
+            dots:  "true/false",
+            arrows: "true/false",
+            togglers: "true/false",
+        }
+    }
+}
+
+const sliderGif = new Slider (
+
+) */

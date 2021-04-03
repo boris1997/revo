@@ -76,7 +76,8 @@
 
 .item-giftset {
   &__wrapper {
-    margin: rem(20px) 0;
+    margin: rem(30px) 0;
+    margin-right: rem(20px);
   }
   &__text {
     max-width: rem(430px);
@@ -88,13 +89,20 @@
 
   &__btn {
     margin-top: rem(46px);
-    width: rem(430px);
     @include flexbox(row, space-between, center);
+  }
+  @media (max-width: 767px) {
+    &__wrapper {
+      margin-right: 0;
+      padding: 0 calc(40 / 530 * 100%);
+    }
+    &__text {
+      max-width: rem(530px);
+    }
   }
 }
 .info-giftset {
   margin-top: rem(24px);
-  width: rem(430px);
   @include flexbox(row, "", "");
   &__item {
     @include flexbox(row, space-between, center);
@@ -107,6 +115,19 @@
   }
   &__span {
     font-weight: 600;
+  }
+  @media (max-width: 767px) {
+    justify-content: space-between;
+    &__item {
+      margin-left: 0 !important;
+    }
+  }
+  @media (max-width: 540px) {
+    &__img {
+      display: block;
+      margin: auto;
+      height: rem(35px);
+    }
   }
 }
 
@@ -123,7 +144,7 @@
 }
 
 .togglers {
-  min-width: 88px;
+  min-width: rem(88px);
 
   border-top: rem(2px) solid $lightGrey;
   border-bottom: rem(1px) solid $lightGrey;
@@ -140,7 +161,8 @@
     width: 100%;
 
     background: #f5f8fc;
-    box-shadow: inset 10px 0px 10px -10px rgb(205 205 205 / 50%);
+    box-shadow: inset rem(10px) rem(0px) rem(10px) rem(-10px)
+      rgb(205 205 205 / 50%);
     font-family: "Montserrat";
   }
 
@@ -171,16 +193,40 @@
     opacity: 1;
   }
 
+  &__resize-observer {
+    width: 5px;
+    position: absolute;
+    visibility: hidden;
+    z-index: -100;
+  }
+
   @media (max-width: 767px) {
     flex-direction: row;
+    border-top: none;
     height: rem(60px);
     &__item-move,
     &__item {
       width: 33.33333%;
       height: 100%;
+      box-shadow: inset rem(0) rem(10px) rem(10px) rem(-10px)
+        rgb(205 205 205 / 50%);
+    }
+    &__item-move {
+      border-left: none;
+      box-shadow: rem(1px) rem(0px) rem(10px) rgb(205 205 205 / 50%);
+    }
+    &__resize-observer {
+      width: 4px;
     }
     /*   &__item-move {
       transform: rotate(-90deg);
     } */
+  }
+  @media (max-width: 540px) {
+    height: rem(40px);
+    &__amount {
+      font-size: rem(22px);
+      line-height: rem(28px);
+    }
   }
 }
