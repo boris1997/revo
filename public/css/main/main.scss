@@ -1,0 +1,150 @@
+.main {
+  overflow: hidden;
+  margin-top: 124px;
+
+  &__body {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 36px;
+  }
+
+  &__body--mg-b {
+    margin-top: 256px;
+  }
+
+  &__body--base {
+    width: 551px;
+  }
+
+  &__body-wrapper {
+    /*     position: relative;
+
+    position: relative; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__right {
+    flex: 0.9;
+  }
+
+  &__content {
+    @include flexbox(column, space-between, center);
+    /* margin-top: 50px; */
+    height: 100%;
+    position: relative;
+  }
+
+  &__title,
+  &__title-base {
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+
+    @media (max-width: 991px) {
+      font-size: rem(42px);
+      line-height: rem(50px);
+    }
+
+    @media (max-width: 768px) {
+      font-size: rem(35px);
+      line-height: rem(40px);
+    }
+    @media (max-width: 480px) {
+      font-size: rem(29px);
+      line-height: rem(30px);
+    }
+  }
+
+  &__text {
+    font-size: rem(35px);
+    line-height: rem(40px);
+    margin-top: 55px;
+    text-align: center;
+    @media (max-width: 991px) {
+      font-size: rem(29px);
+      line-height: rem(30px);
+    }
+
+    @media (max-width: 768px) {
+      font-size: rem(22px);
+      line-height: rem(24px);
+    }
+    @media (max-width: 480px) {
+      font-size: rem(18px);
+      line-height: rem(20px);
+    }
+  }
+
+  &__downloads,
+  &__updates {
+    @include position(absolute, "", 0, 0, 0, 0, auto);
+    @include flexbox(column, center, center);
+  }
+
+  &__downloads {
+    width: 117.5px;
+    height: 117.5px;
+    right: -352px;
+    left: 0;
+    top: -448px;
+  }
+
+  &__updates {
+    width: 187px;
+    height: 187px;
+    right: -112px;
+    left: 0;
+    top: -230px;
+  }
+
+  &__text-base {
+    margin: 0 auto;
+    margin-top: 32px;
+    text-align: center;
+    max-width: 512px;
+    line-height: 30px;
+    font-size: 20px;
+  }
+  &__title-base {
+    max-width: 816px;
+  }
+  &__text-base {
+    max-width: 568px;
+  }
+
+  &__illustration {
+    width: 1000px;
+    margin-top: -90px;
+  }
+
+  &__email-illustration {
+    margin-top: -251px;
+  }
+  &__base-illustration,
+  &__email-illustration {
+    height: auto;
+    width: 100% !important;
+  }
+  /*   &__plains {
+    width: 36%;
+    @include position(absolute, "", -81%, auto, 0, 0, auto);
+    transition: all 0.3s ease-in-out;
+  }
+  &__plain-left {
+    left: -37.5%;
+    right: auto;
+    transform: rotate(7deg);
+    bottom: 27%;
+  }
+  &__plain-right {
+    left: auto;
+    right: -42%;
+    bottom: 60%;
+  } */
+
+  &__tariffs-btn {
+    width: 140px !important;
+  }
+}

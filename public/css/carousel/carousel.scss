@@ -1,10 +1,10 @@
 .carousel {
   &__toggle-btn {
-    @include position(absolute, "", 0, 0, auto, rem(66px), auto);
+    @include position(absolute, "", 0, 0, auto, 66px, auto);
     @include flexbox(row, center, center);
-    height: rem(48px);
-    width: rem(48px);
-    border-radius: rem(100%);
+    height: 48px;
+    width: 48px;
+    border-radius: 100%;
     cursor: pointer;
     z-index: 10;
     background-color: $accentColor;
@@ -12,7 +12,7 @@
 
   &__toggle-btn:nth-child(1) {
     right: auto;
-    left: rem(66px);
+    left: 66px;
     transform: rotate(180deg);
   }
   &__toggle-btn--unactive {
@@ -28,14 +28,14 @@
   @media (max-width: 650px) {
     &__toggle-btn {
       right: calc(66 / 650 * 100%);
-      height: rem(34px);
-      width: rem(34px);
+      height: 34px;
+      width: 34px;
     }
     &__toggle-btn:nth-child(1) {
       left: calc(66 / 650 * 100%);
     }
     &__toggle-img {
-      height: rem(15px);
+      height: 15px;
     }
   }
 }

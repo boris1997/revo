@@ -5,7 +5,9 @@
   "dependencies": {
     "sass-rem": "^2.0.1"
   },
-  "browserslist": ["last 9 versions"],
+  "browserslist": [
+    "last 9 versions"
+  ],
   "devDependencies": {
     "browser-sync": "^2.26.14",
     "del": "^6.0.0",

@@ -1,0 +1,134 @@
+.whyUs {
+  position: relative;
+  background: $lightPink;
+  overflow: hidden;
+  &__section {
+    padding-bottom: 230px;
+  }
+  &__header {
+    margin-bottom: 40px;
+  }
+  &__body {
+    @include flexbox(row, baseline, baseline);
+  }
+
+  &__left {
+    align-self: flex-start;
+  }
+  &__left,
+  &__right {
+    flex: 1;
+  }
+
+  &__right {
+    align-self: center;
+  }
+
+  &__img {
+    margin-top: 0;
+  }
+  &__item {
+    margin-left: 16px;
+    padding-left: 18px;
+    font-weight: 400;
+  }
+  &__item + &__item {
+    margin-top: 18px;
+  }
+  &__item::marker {
+    content: url("../../assets/svg/check.svg");
+  }
+}
+
+.bg-img {
+  @include position(absolute, "", 0, 0, 0, 0, auto);
+}
+
+.left-branch {
+  right: auto;
+  top: auto;
+  bottom: -30px;
+  left: -22px;
+}
+.right-branch {
+  left: auto;
+  top: auto;
+  bottom: -57px;
+  right: -44px;
+}
+
+.brush {
+  right: 20%;
+  top: auto;
+  bottom: -30px;
+  left: auto;
+}
+.bottle {
+  right: auto;
+  top: auto;
+  bottom: -30px;
+  left: 16%;
+  width: 50px;
+}
+
+.pencil {
+  right: -10px;
+  top: 10px;
+  bottom: auto;
+  left: auto;
+  transform: rotate(201deg);
+}
+
+.tongs {
+  right: auto;
+  top: -14px;
+  bottom: auto;
+  left: 31px;
+}
+// @include position(absolute, "", -37.5px, 0, 21.5px, auto, auto);
+
+@media (max-width: 768px) {
+  .whyUs {
+    &__body {
+      flex-direction: column;
+    }
+    &__section {
+      padding-bottom: 268px;
+    }
+    &__img {
+      width: 100%;
+    }
+
+    &__left {
+      margin: auto;
+    }
+  }
+
+  .left-branch {
+    width: 152px;
+    // bottom: 37px;
+    bottom: -11px;
+  }
+  .right-branch {
+    width: 150px;
+    bottom: 18px;
+  }
+
+  .bottle {
+    width: 43px;
+  }
+  .brush {
+    width: 70px;
+    bottom: -19px;
+  }
+
+  @media (max-width: 480px) {
+    .bottle {
+      left: 40%;
+    }
+    .brush {
+      right: 1%;
+    }
+    
+  }
+}

@@ -7,345 +7,700 @@
     <meta name="description" content="Author: Volkov Boris, sitename: vehicleblackboxdvr, auto videoregistrator">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,300italic,regular,600,700&display=swap"
-        rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:900&display=swap" rel="stylesheet" />
     <title>revo project</title>
 </head>
 
-<body>
+<body class="body">
 
-    <header class="header">
+    <div class="page">
         <div class="container">
-            <div class="header__body">
-                <main class="main">
-                    <h1 class="main__title">
-                        <span class="main__title-span">Your</span>
-                        <span class="main__title-accent">
-                            PERSONALIZED
-                        </span>
-                        <span class="main__title-span">COFFEE</span>
-                    </h1>
-                    <div class="main__left "><img src="./assets/svg/ic_logo1.svg" alt="logo" class="main__logo"></div>
-                    <div class="main__center">
-                        <div class="main__play-btn"> <img src="./assets/svg/ic_triangle.svg" alt="play" srcset="">
-                        </div>
+            <header class="header">
+                <div class="header__content">
+                    <div class="header__logo logo">
+                        <a href="index.html" class="logo__link">
+                            <img src="./assets/img/logo.svg" alt="лого" class="logo__img">
+                        </a>
                     </div>
-                </main>
-                <aside class="sidebar">
-                    <div class="sidebar__cart cart">
-                        <span class="cart__amount">2</span>
-                        <img src="./assets/svg/ic_cart.svg" alt="" srcset="">
-                    </div>
-                    <nav class="sidebar__nav nav">
+                    <!-- <nav class="nav">
                         <ul class="nav__list">
-                            <li class="nav__item"><a href="#" class="nav__link nav__link--active">TRANG CHỦ</a></li>
-                            <li class="nav__item"><a href="#" class="nav__link">COFFEE</a></li>
-                            <li class="nav__item"><a href="#" class="nav__link">PHIN MẠ MÀU</a></li>
-                            <li class="nav__item"><a href="#" class="nav__link">COMBO PHIN PHÊ</a></li>
-                            <li class="nav__item"><a href="#" class="nav__link">GIFTSET</a></li>
-                            <li class="nav__item"><a href="#" class="nav__link">LIÊN HỆ</a></li>
+                            <li class="nav__items"><a href="base.html" class="nav__link">База организаций</a></li>
+                            <li class="nav__items"><a href="mail.html" class="nav__link">E-mail рассылка</a></li>
+                            <li class="nav__items"><a href="services.html" class="nav__link">Все услуги</a></li>
+                            <li class="nav__items"><a href="articles.html" class="nav__link">Статьи</a></li>
                         </ul>
-                    </nav>
-                </aside>
-            </div>
+                    </nav> -->
+                    <div class="header__contacts">
+                        <a href="contact.html" class="header__btn btn__link btn btn__main">Контакты</a>
+                    </div>
+                    <!-- <div class="cross hamburger-menu header__hamburger-menu">
+                        <svg class="hamburger-menu__content" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                            <path class="hamburger-menu__line hamburger-menu__line--1"
+                                d="M0 40h62c13 0 6 28-4 18L35 35" />
+                            <path class="hamburger-menu__line hamburger-menu__line--2" d="M0 50h70" />
+                            <path class="hamburger-menu__line hamburger-menu__line--3"
+                                d="M0 60h62c13 0 6-28-4-18L35 65" />
+                        </svg>
+                    </div> -->
+                    <div class="page__sidebar sidebar ">
+                        <div class="sidebar__body">
+                            <div class="sidebar__content">
+                                <div class="sidebar__menu mobile-menu">
+                                    <ul class="mobile-menu__wrapper mobile-menu__active">
+                                        <li class="mobile-menu__item mobile-menu__item--active">
+                                            <a class="mobile-menu__link item__text-medium mobile-menu__toggler"
+                                                href="base.html" class="menu__link">База организаций</a>
+                                        </li>
+                                        <li class="mobile-menu__item mobile-menu__item--active">
+                                            <a class="mobile-menu__link item__text-medium mobile-menu__toggler"
+                                                href="mail.html">E-mail
+                                                рассылка</a>
+
+                                        </li>
+                                        <li class="mobile-menu__item mobile-menu__item--active">
+                                            <a class="mobile-menu__link item__text-medium mobile-menu__toggler"
+                                                href="services.html">Все
+                                                услуги</a>
+
+                                        </li>
+                                        <li class="mobile-menu__item mobile-menu__item--active">
+                                            <a class="mobile-menu__link item__text-medium"
+                                                href="articles.html">Статьи</a>
+                                        </li>
+                                        <li class="mobile-menu__item mobile-menu__item--active"><a
+                                                class="mobile-menu__link item__text-medium "
+                                                href="contact.html">Контакты</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="overlay">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+
+            <main class="main">
+                <div class="main__content">
+                    <div class="main__header">
+                        <h1 class="main__title main__item">Салон красоты “Юлия”</h1>
+                        <p class="main__text">Приветствуем Вас!</p>
+                    </div>
+                    <!--      <div class="main__body mg_top_none">
+                        <div class="main__body-wrapper">
+                            <object class="main__illustration" data="./assets/svg/main/main/illustration-full.svg"
+                                type="" title="главная-иллюстрация"></object>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="main__left">
+                    </div> -->
+                    <!--   <div class="main__right"><img src="assets/img/vehicleDvr.webp" alt="" class="main__img"></div> -->
+                </div>
+            </main>
         </div>
-    </header>
+        <div class="page__decoration">
 
-    <section class="features">
-        <div class="container-md">
-
-            <h2 class="page__title"><span class="page__title-span">Your Personalized Coffee</span>COFFEE BUILD YOUR BASE
-            </h2>
-            <div class="features__body section__body">
-                <div class="features__item item-feature item">
-                    <img class="item-feature__img" src="./assets/svg/ic_coffee-house.svg" alt="" srcset="">
-                    <h3 class="item-feature__title item__title">Nguồn gốc</h3>
-                    <p class="item-feature__text">Những hạt cà phê Arabica, Robusta đạt chất lượng theo tiêu chuẩn quốc
-                        tế.
-                    </p>
-                </div>
-                <div class="features__item item-feature item">
-                    <img class="item-feature__img" src="./assets/svg/ic_coffee-tab.svg" alt="" srcset="">
-                    <h3 class="item-feature__title item__title">Chất</h3>
-                    <p class="item-feature__text">Từng một hạt cà phê là cả một quá trình tập trung cao độ của nghệ nhân
-                        cà
-                        phê.</p>
-                </div>
-                <div class="features__item item-feature item">
-                    <img class="item-feature__img" src="./assets/svg/ic_coffee-cup.svg" alt="" srcset="">
-                    <h3 class="item-feature__title item__title">Các loại hạt</h3>
-                    <p class="item-feature__text">70% chất lượng tách cà phê đến từ nguồn gốc và chất lượng green bean.
-                    </p>
-                </div>
-                <div class="features__item item-feature item">
-                    <img class="item-feature__img" src="./assets/svg/ic_coffee-machine.svg" alt="" srcset="">
-                    <h3 class="item-feature__title item__title">Pha chế</h3>
-                    <p class="item-feature__text">Những hạt cà phê được lột xác qua quá trình rang xay kỹ lưỡng và
-                        nghiêm
-                        ngặt.</p>
-                </div>
-            </div>
+            <!--    <img src="./assets/img/main-decoration.svg" alt="декорация" class="page__decoration"> -->
         </div>
-    </section>
+    </div>
 
-    <section class="coffee">
+    <section class="services section">
+        <div class="container section__content">
 
-        <div class="container section coffee__section">
-            <h2 class="page__title"><span class="page__title-span">Choose Your Favorite</span>CHUẨN GU ĐÚNG VỊ
-            </h2>
-            <div class="coffee__body section__body">
-
-                <div class="coffee__toggle-btn carousel__toggle-btn carousel__toggle-btn--unactive">
-                    <img class="coffee__toggle-img carousel__toggle-img" src="./assets/svg/ic_right-arrow.svg"
-                        alt="arrow" srcset="">
-                </div>
-                <div class="coffee__toggle-btn carousel__toggle-btn">
-                    <img class="coffee__toggle-img carousel__toggle-img" src="./assets/svg/ic_right-arrow.svg"
-                        alt="arrow" srcset="">
-                </div>
-                <div class="coffee__body-wrapper carousel__content--smooth">
-
-                    <div class="coffee__item">
-                        <div class="item-coffee">
-                            <div class="item-coffee__left">
-                                <img src="./assets/img/CHUẨN/image-1.webp" alt="" class="item-coffee__img">
-                            </div>
-                            <div class="item-coffee__right item">
-                                <div class="item-coffee__header">
-                                    <span class="item-coffee__price  item__price">99.000</span>
-                                    <h3 class="item-coffee__title  item__title">REVO Morning</h3>
-                                </div>
-                                <p class="item-coffee__text  item__text">đắng, hậu ngọt, hương hoa</p>
-                                <div class="item-coffee__btn btn-coffee"><button class="btn-coffee__buy btn__buy">MUA
-                                        NGAY</button><button class="btn-coffee__more btn__more">CHI TIẾT</button></div>
-                            </div>
-                        </div>
-                        <div class="item-coffee">
-                            <div class="item-coffee__left">
-                                <img src="./assets/img/CHUẨN/image-2.webp" alt="" class="item-coffee__img">
-                            </div>
-                            <div class="item-coffee__right item">
-                                <div class="item-coffee__header">
-                                    <span class="item-coffee__price item__price">139.000</span>
-                                    <h3 class="item-coffee__title item__title ">REVO Origin</h3>
-                                </div>
-                                <p class="item-coffee__text  item__text ">hậu ngọt, ít đắng, vị chua dâu</p>
-                                <div class="item-coffee__btn btn-coffee"><button class="btn-coffee__buy btn__buy">MUA
-                                        NGAY</button><button class="btn-coffee__more btn__more">CHI TIẾT</button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="coffee__item">
-                        <div class="item-coffee">
-                            <div class="item-coffee__left">
-                                <img src="./assets/img/CHUẨN/image-3.webp" alt="" class="item-coffee__img">
-                            </div>
-                            <div class="item-coffee__right item">
-                                <div class="item-coffee__header">
-                                    <span class="item-coffee__price item__price">85.000</span>
-                                    <h3 class="item-coffee__title item__title ">REVO Everyday</h3>
-                                </div>
-                                <p class="item-coffee__text  item__text ">cân bằng, hậu đắng, vị chocolate</p>
-                                <div class="item-coffee__btn btn-coffee"><button class="btn-coffee__buy btn__buy">MUA
-                                        NGAY</button><button class="btn-coffee__more btn__more">CHI TIẾT</button></div>
-                            </div>
-                        </div>
-                        <div class="item-coffee">
-                            <div class="item-coffee__left">
-                                <img src="./assets/img/CHUẨN/image-4.webp" alt="" class="item-coffee__img">
-                            </div>
-                            <div class="item-coffee__right item">
-                                <div class="item-coffee__header">
-                                    <span class="item-coffee__price item__price">75.000</span>
-                                    <h3 class="item-coffee__title item__title ">REVO Đậm Đà</h3>
-                                </div>
-                                <p class="item-coffee__text  item__text ">đậm đà, đắng, truyền thống</p>
-                                <div class="item-coffee__btn btn-coffee"><button class="btn-coffee__buy btn__buy">MUA
-                                        NGAY</button><button class="btn-coffee__more btn__more">CHI TIẾT</button></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="coffee__item">
-                        <div class="item-coffee">
-                            <div class="item-coffee__left">
-                                <img src="./assets/img/CHUẨN/image-5.webp" alt="" class="item-coffee__img">
-                            </div>
-                            <div class="item-coffee__right item">
-                                <div class="item-coffee__header">
-                                    <span class="item-coffee__price item__price">195.000</span>
-                                    <h3 class="item-coffee__title item__title  ">REVO Honey</h3>
-                                </div>
-                                <p class="item-coffee__text item__text">độ ngọt cao, hậu ngọt, chua họ táo</p>
-                                <div class="item-coffee__btn btn-coffee">
-                                    <button class="btn-coffee__buy btn__buy">MUA
-                                        NGAY</button><button class="btn-coffee__more btn__more">CHI TIẾT</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-coffee">
-                            <div class="item-coffee__left">
-                                <img src="./assets/img/CHUẨN/image-6.webp" alt="" class="item-coffee__img">
-                            </div>
-                            <div class="item-coffee__right item">
-                                <div class="item-coffee__header">
-                                    <span class="item-coffee__price item__price">169.000</span>
-                                    <h3 class="item-coffee__title  item__title">REVO Natural</h3>
-                                </div>
-                                <p class="item-coffee__text item__text">hậu ngọt, hương hoa, vị chua dâu</p>
-                                <div class="item-coffee__btn btn-coffee"><button class="btn-coffee__buy btn__buy">MUA
-                                        NGAY</button><button class="btn-coffee__more btn__more">CHI TIẾT</button></div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="coffee__resizeOberver"></div>
+            <div class="section__header whyUs__header">
+                <h2 class="section__title">Услуги
+                </h2>
             </div>
-        </div>
-    </section>
+            <div class="carousel__wrapper section__body services__slider  container-md">
 
-    <section class="giftset">
-        <div class="container section giftset__section">
-
-            <h2 class="page__title"><span class="page__title-span">Best Gift For Best Friend</span>GIFTSET
-            </h2>
-            <div class="carousel__wrapper section__body giftset__slider  container-md">
-
-                <div class="giftset__body carousel__content--smooth">
-                    <div class="giftset__body-wrapper">
-                        <div class="giftset__img-container">
-                            <div class="giftset__decoration"></div>
-                            <img class="giftset__img" src="./assets/img/gifeset.webp" alt="giftset"
-                                class="giftset__img">
-                        </div>
-                        <div class="giftset__item item-giftset item">
-                            <div class="item-giftset__wrapper">
-
-                                <span class="item-giftset__price item__price">285.000</span>
-                                <h3 class="item-giftset__title item__title">Giftset "Cà phê phin Việt Nam"</h3>
-                                <p class="item-giftset__text item__text">Món quà tuyệt vời dành cho người sành cà phê.
-                                    Hạt
-                                    cà phê được Revo cẩn trọng chọn lựa, rang xay theo công nghệ và bí
-                                    quyết học hỏi stừ những nghệ nhân nổi tiếng, cùng với tình yêu, sự đam mê của người
-                                    làm
-                                    cà phê… tạo ra những tách cà phê
-                                    tinh khiết chỉ dành riêng cho bạn.</p>
-                                <div class="info-giftset">
-                                    <div class="info-giftset__item">
-                                        <img class="info-giftset__img" src="./assets/svg/ic_coffee-grain.svg"
-                                            alt="grain" srcset="">
-                                        <p class="info-giftset__text item__text">Loại hạt
-                                            <br><span class="info-giftset__span">Fine Robusta Blend</span>
-                                        </p>
-                                    </div>
-                                    <div class="info-giftset__item">
-                                        <img class="info-giftset__img" src="./assets/svg/ic_mountain.svg" alt="mountain"
-                                            srcset="">
-                                        <p class="info-giftset__text item__text">
-                                            Độ cao
-                                            <br>
-                                            <span class="info-giftset__span">700 - 800m</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="item-giftset__btn btn-giftset"><button class="btn-giftset__buy btn__buy">MUA
-                                        NGAY</button><button class="btn-giftset__more btn__more">CHI TIẾT</button></div>
+                <div class="services__body  carousel__content--smooth">
+                    <div class="services__slide">
+                        <div class="services__slide-wrapper">
+                            <div class="services__img-container">
+                                <div class="services__decoration"></div>
+                                <img class="services__img" src="./assets/img/services/img-2.webp" alt="services"
+                                    class="services__img">
                             </div>
-                        </div>
-                    </div>
-                    <div class="giftset__body-wrapper">
-                        <div class="giftset__img-container">
-                            <div class="giftset__decoration"></div>
-                            <img class="giftset__img" src="./assets/img/gifeset.webp" alt="giftset"
-                                class="giftset__img">
-                        </div>
-                        <div class="giftset__item item-giftset item">
-                            <div class="item-giftset__wrapper">
-                                <span class="item-giftset__price item__price">285.000</span>
-                                <h3 class="item-giftset__title item__title">Giftset "Cà phê phin Việt Nam"</h3>
-                                <p class="item-giftset__text item__text">Món quà tuyệt vời dành cho người sành cà phê.
-                                    Hạt
-                                    cà phê được Revo cẩn trọng chọn lựa, rang xay theo công nghệ và bí
-                                    quyết học hỏi stừ những nghệ nhân nổi tiếng, cùng với tình yêu, sự đam mê của người
-                                    làm
-                                    cà phê… tạo ra những tách cà phê
-                                    tinh khiết chỉ dành riêng cho bạn.</p>
-                                <div class="info-giftset">
-                                    <div class="info-giftset__item">
-                                        <img class="info-giftset__img" src="./assets/svg/ic_coffee-grain.svg"
-                                            alt="grain" srcset="">
-                                        <p class="info-giftset__text item__text">Loại hạt
-                                            <br><span class="info-giftset__span">Fine Robusta Blend</span>
-                                        </p>
+                            <div class="services__item item-services item">
+                                <div class="item-services__wrapper">
+                                    <div class="item-services__body">
+                                        <div class="item-services__content item-service">
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper">
+
+                                                    <h3 class="item-service__title">Женский зал:</h3>
+
+                                                    <ul class="item-service__ul">
+                                                        <li class="item-service__li item__text">
+                                                            ДЛИНА ВОЛОС ДО 15 СМ.(КОРОТКИЕ) -
+                                                            <span class="item-service__span color_accent item__text">
+                                                                600 РУБ.
+                                                            </span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            ДЛИНА ВОЛОС ДО 15 СМ. (КОРОТКИЕ, КРЕТИВ) - <span
+                                                                class="item-service__span color_accent item__text">700
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            ДЛИНА ВОЛОС ДО 30 СМ. (СРЕДНИЕ) - <span
+                                                                class="item-service__span color_accent item__text">800
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            ДЛИНА ВОЛОС ДО 45 СМ. (ДЛИННЫЕ) - <span
+                                                                class="item-service__span color_accent item__text">1000
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">СТРИЖКА ЧЁЛКИ - <span
+                                                                class="item-service__span color_accent item__text">200
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            СРЕЗ ПО ДЛИНЕ - <span
+                                                                class="item-service__span color_accent item__text">500
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            СУШКА ПО ФОРМЕ - <span
+                                                                class="item-service__span color_accent item__text">200
+                                                                РУБ.</span>
+
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            МЫТЬЁ ГОЛОВЫ - <span
+                                                                class="item-service__span color_accent item__text">100
+                                                                РУБ.</span>
+
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            ЖЕНСКАЯ СТРИЖКА(СКИДКИ ПЕНСИОНЕРАМ) - <span
+                                                                class="item-service__span color_accent item__text">250
+                                                                РУБ.</span>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="info-giftset__item">
-                                        <img class="info-giftset__img" src="./assets/svg/ic_mountain.svg" alt="mountain"
-                                            srcset="">
-                                        <p class="info-giftset__text item__text">
-                                            Độ cao
-                                            <br>
-                                            <span class="info-giftset__span">700 - 800m</span>
-                                        </p>
+                                    <div class="item-services__btn item-services__footer btn-services"><button
+                                            class="btn-services__buy btn__buy  btn__popup" data-modal="form"
+                                            type="button">Оставить
+                                            заявку</button>
                                     </div>
-                                </div>
-                                <div class="item-giftset__btn btn-giftset"><button class="btn-giftset__buy btn__buy">MUA
-                                        NGAY</button><button class="btn-giftset__more btn__more">CHI TIẾT</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="giftset__body-wrapper">
-                        <div class="giftset__img-container">
-                            <div class="giftset__decoration"></div>
-                            <img class="giftset__img" src="./assets/img/gifeset.webp" alt="giftset"
-                                class="giftset__img">
-                        </div>
-                        <div class="giftset__item item-giftset item">
-                            <div class="item-giftset__wrapper">
-                                <span class="item-giftset__price item__price">285.000</span>
-                                <h3 class="item-giftset__title item__title">Giftset "Cà phê phin Việt Nam"</h3>
-                                <p class="item-giftset__text item__text">Món quà tuyệt vời dành cho người sành cà phê.
-                                    Hạt
-                                    cà phê được Revo cẩn trọng chọn lựa, rang xay theo công nghệ và bí
-                                    quyết học hỏi stừ những nghệ nhân nổi tiếng, cùng với tình yêu, sự đam mê của người
-                                    làm
-                                    cà phê… tạo ra những tách cà phê
-                                    tinh khiết chỉ dành riêng cho bạn.</p>
-                                <div class="info-giftset">
-                                    <div class="info-giftset__item">
-                                        <img class="info-giftset__img" src="./assets/svg/ic_coffee-grain.svg"
-                                            alt="grain" srcset="">
-                                        <p class="info-giftset__text item__text">Loại hạt
-                                            <br><span class="info-giftset__span">Fine Robusta Blend</span>
-                                        </p>
+                    <div class="services__slide">
+                        <div class="services__slide-wrapper">
+                            <div class="services__img-container">
+                                <div class="services__decoration"></div>
+                                <img class="services__img" src="./assets/img/services/img-1.webp" alt="services"
+                                    class="services__img">
+                            </div>
+                            <div class="services__item item-services item">
+                                <div class="item-services__wrapper">
+
+                                    <div class="item-services__body">
+                                        <div class="item-services__content item-service">
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper">
+                                                    <h3 class="item-service__title">Мужской зал:</h3>
+                                                    <ul class="item-service__ul">
+                                                        <li class="item-service__li item__text">
+                                                            ОКАНТОВКА -
+                                                            <span class="item-service__span color_accent item__text">
+                                                                150 РУБ.
+                                                            </span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            СТРИЖКА НАГОЛО МАШИНКОЙ - <span
+                                                                class="item-service__span color_accent item__text">200
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            ОДНА НАСАДКА - <span
+                                                                class="item-service__span color_accent item__text">300
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            ДВЕ НАСАДКИ - <span
+                                                                class="item-service__span color_accent item__text">400
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">МОДЕЛЬНАЯ СТРИЖКА -
+                                                            <span class="item-service__span color_accent item__text">500
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            СТРИЖКА МОДЕЛЬНАЯ НОЖНИЦАМИ - <span
+                                                                class="item-service__span color_accent item__text">600
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            СТРИЖКА КРЕАТИВНАЯ НОЖНИЦАМИ- <span
+                                                                class="item-service__span color_accent item__text">600
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            МЫТЬЁ ГОЛОВЫ, СУШКА - <span
+                                                                class="item-service__span color_accent item__text">100
+                                                                РУБ.</span>
+
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            СТРИЖКА МУЖСКАЯ(СКИДКА ПЕНСИОНЕРАМ) - <span
+                                                                class="item-service__span color_accent item__text">250
+                                                                РУБ.</span>
+
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            СТРИЖКА МУЖСКАЯ(СКИДКА ПЕНСИОНЕРАМ) - <span
+                                                                class="item-service__span color_accent item__text">250
+                                                                РУБ.</span>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="info-giftset__item">
-                                        <img class="info-giftset__img" src="./assets/svg/ic_mountain.svg" alt="mountain"
-                                            srcset="">
-                                        <p class="info-giftset__text item__text">
-                                            Độ cao
-                                            <br>
-                                            <span class="info-giftset__span">700 - 800m</span>
-                                        </p>
+                                    <div class="item-services__btn item-services__footer btn-services"><button
+                                            class="btn-services__buy btn__buy  btn__popup" data-modal="form"
+                                            type="button">Оставить
+                                            заявку</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="services__slide">
+                        <div class="services__slide-wrapper">
+                            <div class="services__img-container">
+                                <div class="services__decoration"></div>
+                                <img class="services__img" src="./assets/img/services/img-3.webp" alt="services"
+                                    class="services__img">
+                            </div>
+                            <div class="services__item item-services item">
+                                <div class="item-services__wrapper">
+                                    <div class="item-services__body">
+                                        <div class="item-services__content item-service">
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper">
+                                                    <h3 class="item-service__title">Детский зал:</h3>
+                                                    <ul class="item-service__ul">
+                                                        <li class="item-service__li item__text">
+                                                            ДЕТСКАЯ СТРИЖКА ДО 7 ЛЕТ - <span
+                                                                class="item-service__span color_accent item__text">
+                                                                400
+                                                                РУБ.</span> </li>
+                                                        <li class="item-service__li item__text">
+                                                            ДЕТСКАЯ КРЕАТИВНАЯ СТРИЖКА ДО 7 ЛЕТ - <span
+                                                                class="item-service__span color_accent item__text"> 500
+                                                                РУБ.</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="item-services__btn item-services__footer btn-services"><button
+                                            class="btn-services__buy btn__buy  btn__popup" data-modal="form"
+                                            type="button">Оставить
+                                            заявку</button>
                                     </div>
                                 </div>
-                                <div class="item-giftset__btn btn-giftset"><button class="btn-giftset__buy btn__buy">MUA
-                                        NGAY</button><button class="btn-giftset__more btn__more">CHI TIẾT</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="services__slide">
+                        <div class="services__slide-wrapper">
+                            <div class="services__img-container">
+                                <div class="services__decoration"></div>
+                                <img class="services__img" src="./assets/img/services/img-4.webp" alt="services"
+                                    class="services__img">
+                            </div>
+                            <div class="services__item item-services item">
+                                <div class="item-services__wrapper">
+                                    <div class="item-services__body">
+
+                                        <div class="item-services__content item-service">
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper">
+                                                    <h3 class="item-service__title">
+                                                        (Окрашивание волос в один тон)
+                                                        <br> Наша краска/Своя краска:
+                                                    </h3>
+                                                    <ul class="item-service__ul">
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос до 15см.(короткие):
+                                                            <span class="item-service__span color_accent item__text">
+                                                                1.400 руб./1.000 руб.
+                                                            </span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос до 30см.(средние): <span
+                                                                class="item-service__span color_accent item__text">1.700
+                                                                руб. /
+                                                                1.200
+                                                                руб.
+                                                            </span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос до 45см.(длинные): <span
+                                                                class="item-service__span color_accent item__text">2,000
+                                                                руб. /
+                                                                1.600
+                                                                руб.
+                                                            </span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Окрашивание корней волос: <span
+                                                                class="item-service__span color_accent item__text">1.200
+                                                                -
+                                                                1.400 руб.
+                                                                / 950 - 1.300 руб.</span>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper ">
+                                                    <h3 class="item-service__title">Укладка:
+                                                    </h3>
+                                                    <ul class="item-service__ul">
+
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос до 15 см.(короткие) - <span
+                                                                class="item-service__span color_accent item__text">700
+                                                                руб.
+                                                            </span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос до 30 см.(средние) - <span
+                                                                class="item-service__span color_accent item__text">900
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос до 45 см.(длинные) - <span
+                                                                class="item-service__span color_accent item__text">1.100
+                                                                руб.</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper ">
+                                                    <h3 class="item-service__title">Укладка вечерняя
+                                                        :
+                                                    </h3>
+                                                    <ul class="item-service__ul">
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос до 15 см.(короткие) - <span
+                                                                class="item-service__span color_accent item__text">800
+                                                                руб.
+                                                            </span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос до 30 см.(средние) - <span
+                                                                class="item-service__span color_accent item__text">1.000
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос до 45 см.(длинные) - <span
+                                                                class="item-service__span color_accent item__text">1.500
+                                                                руб.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос свыше 45 см <span
+                                                                class="item-service__span color_accent item__text">1.500
+                                                                руб.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Вечерняя прическа - <span
+                                                                class="item-service__span color_accent item__text">от
+                                                                2.000
+                                                                руб.
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper ">
+                                                    <h3 class="item-service__title">Химическая завивка
+                                                        :
+                                                    </h3>
+                                                    <ul class="item-service__ul">
+
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос до 15 см.(короткие) - <span
+                                                                class="item-service__span color_accent item__text">1.000
+                                                                руб.
+                                                            </span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос до 30 см.(средние) - <span
+                                                                class="item-service__span color_accent item__text">1.300
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос до 45 см.(длинные) - <span
+                                                                class="item-service__span color_accent item__text">1.500
+                                                                руб.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Длина волос свыше 45 см <span
+                                                                class="item-service__span color_accent item__text">1.800
+                                                                руб.</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="item-services__btn item-services__footer  btn-services"><button
+                                            class="btn-services__buy btn__buy  btn__popup" data-modal="form"
+                                            type="button">Оставить
+                                            заявку</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="services__slide">
+                        <div class="services__slide-wrapper">
+                            <div class="services__img-container">
+                                <div class="services__decoration"></div>
+                                <img class="services__img" src="./assets/img/services/img-5.webp" alt="services"
+                                    class="services__img">
+                            </div>
+                            <div class="services__item item-services item">
+                                <div class="item-services__wrapper">
+                                    <div class="item-services__body">
+
+                                        <div class="item-services__content item-service">
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper">
+                                                    <h3 class="item-service__title">Наращивание ногтей
+                                                        (гель/акрил):
+                                                    </h3>
+                                                    <ul class="item-service__ul">
+                                                        <li class="item-service__li item__text">
+                                                            Типсы -
+                                                            <span class="item-service__span color_accent item__text">
+                                                                2.000 РУБ.
+                                                            </span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            По форме - <span
+                                                                class="item-service__span color_accent item__text">2.300
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Френч - <span
+                                                                class="item-service__span color_accent item__text">2.300
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Снятие наращенных ногтей - <span
+                                                                class="item-service__span color_accent item__text">600
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">Коррекция ногтей - <span
+                                                                class="item-service__span color_accent item__text">1.300
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Коррекция ногтей "Френч" - <span
+                                                                class="item-service__span color_accent item__text">1.400
+                                                                РУБ.</span>
+                                                        </li>
+
+
+                                                        <li class="item-service__li item__text">
+                                                            СТРИЖКА МУЖСКАЯ(СКИДКА ПЕНСИОНЕРАМ) - <span
+                                                                class="item-service__span color_accent item__text">250
+                                                                РУБ.</span>
+
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            СТРИЖКА МУЖСКАЯ(СКИДКА ПЕНСИОНЕРАМ) - <span
+                                                                class="item-service__span color_accent item__text">250
+                                                                РУБ.</span>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper ">
+                                                    <h3 class="item-service__title">Дизайн:
+                                                    </h3>
+                                                    <ul class="item-service__ul">
+
+                                                        <li class="item-service__li item__text">
+                                                            1 Стразик - <span
+                                                                class="item-service__span color_accent item__text">25
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            1 Ноготь - <span
+                                                                class="item-service__span color_accent item__text">100
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Дизайн ногтей - <span
+                                                                class="item-service__span color_accent item__text">900
+                                                                РУБ.</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper ">
+                                                    <h3 class="item-service__title">SPA - парафинотерапия:
+                                                    </h3>
+                                                    <ul class="item-service__ul">
+
+                                                        <li class="item-service__li item__text">
+                                                            SPA парафинотерапия рук - <span
+                                                                class="item-service__span color_accent item__text">400
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Снятие лака - <span
+                                                                class="item-service__span color_accent item__text">5 0
+                                                                РУБ.</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper ">
+                                                    <h3 class="item-service__title">Маникюр:
+                                                    </h3>
+                                                    <ul class="item-service__ul">
+
+                                                        <li class="item-service__li item__text">
+                                                            Классический маникюр - <span
+                                                                class="item-service__span color_accent item__text">600
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Аппаратный маникюр - <span
+                                                                class="item-service__span color_accent item__text">700
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Мужской маникюр - <span
+                                                                class="item-service__span color_accent item__text">700
+                                                                РУБ.</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper ">
+                                                    <h3 class="item-service__title">Педикюр:
+                                                    </h3>
+                                                    <ul class="item-service__ul">
+
+                                                        <li class="item-service__li item__text">
+                                                            Классический педикюр - <span
+                                                                class="item-service__span color_accent item__text">1.100
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Аппаратный педикюр - <span
+                                                                class="item-service__span color_accent item__text">1.400
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Мужской педикюр - <span
+                                                                class="item-service__span color_accent item__text">1.500
+                                                                РУБ.</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper ">
+                                                    <h3 class="item-service__title">Покрытие лаком:
+                                                    </h3>
+                                                    <ul class="item-service__ul">
+
+                                                        <li class="item-service__li item__text">
+                                                            Покрытие лаком - <span
+                                                                class="item-service__span color_accent item__text">100
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Покрытие лаком "Френч" - <span
+                                                                class="item-service__span color_accent item__text">300
+                                                                РУБ.</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="item-service__element">
+                                                <div class="item-service__element-wrapper ">
+                                                    <h3 class="item-service__title">Покрытие гель-лаком:
+                                                    </h3>
+                                                    <ul class="item-service__ul">
+
+                                                        <li class="item-service__li item__text">
+                                                            Покрытие гель-лаком - <span
+                                                                class="item-service__span color_accent item__text">800
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Покрытие гель-лаком "Френч" - <span
+                                                                class="item-service__span color_accent item__text">1.400
+                                                                РУБ.</span>
+                                                        </li>
+                                                        <li class="item-service__li item__text">
+                                                            Снятие гель-лака - <span
+                                                                class="item-service__span color_accent item__text">300
+                                                                РУБ.</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-services__btn item-services__footer  btn-services"><button
+                                            class="btn-services__buy btn__buy  btn__popup" data-modal="form"
+                                            type="button">Оставить
+                                            заявку</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="togglers giftset__togglers">
-                    <div class="togglers__item togglers__item--active"><span class="togglers__amount">1</span>
+                <div class="togglers services__togglers">
+                    <div class="togglers__item togglers__item--active"><span class="togglers__amount">Женский
+                            зал</span>
                     </div>
-                    <div class="togglers__item"><span class="togglers__amount">2</span> </div>
-                    <div class="togglers__item"><span class="togglers__amount">3</span></div>
+                    <div class="togglers__item"><span class="togglers__amount">Мужский зал</span> </div>
+                    <div class="togglers__item"><span class="togglers__amount">Детский зал</span> </div>
+                    <div class="togglers__item"><span class="togglers__amount">Колористика</span></div>
+                    <div class="togglers__item"><span class="togglers__amount">Ногтевой сервис</span></div>
                     <div class="togglers__item-move togglers__item-move--smooth"><span
-                            class="togglers__amount togglers__slide-number">1</span>
+                            class="togglers__amount togglers__slide-number">Женский зал</span>
                     </div>
                     <div class="togglers__resize-observer"></div>
                 </div>
@@ -354,136 +709,157 @@
     </section>
 
 
-    <section class="combo">
-        <div class="container section combo__section">
-
-            <h2 class="page__title"><span class="page__title-span">Your Personalized Coffee</span>COMBO PHIN PHÊ
-            </h2>
-            <div class="combo__body section__body">
-                <div class="combo__toggle-btn carousel__toggle-btn carousel__toggle-btn--unactive">
-                    <img class="combo__toggle-img carousel__toggle-img" src="./assets/svg/ic_right-arrow.svg"
-                        alt="arrow" srcset="">
+    <section class="whyUs section section--active">
+        <div class="container section__content whyUs__section">
+            <div class="section__header whyUs__header">
+                <h2 class="section__title">Почему стоит обратится к нам
+                </h2>
+            </div>
+            <div class="whyUs__body">
+                <div class="whyUs__left data-lazy"><img src="./assets/svg/whyUs/hair.svg" alt="что получите"
+                        class="whyUs__img data-lazy">
                 </div>
-                <div class="combo__toggle-btn carousel__toggle-btn">
-                    <img class="combo__toggle-img carousel__toggle-img" src="./assets/svg/ic_right-arrow.svg"
-                        alt="arrow" srcset="">
+                <div class="whyUs__right">
+                    <ul class="whyUs__list">
+                        <li class="whyUs__item item__text">Центр красоты и косметологии "Юлия" - это то место, где Вам
+                            всегда рады</li>
+                        <li class="whyUs__item item__text">Знаем и любим свое дело</li>
+                        <li class="whyUs__item item__text">Мы находим к каждому клиенту индивидуальный подход
+                        </li>
+                    </ul>
                 </div>
-                <div class="carousel__wrapper combo__body-wrapper carousel__content--smooth">
+            </div>
+        </div>
+        <object data="./assets/svg/whyUs/left-branch.svg" type="" class="whyUs__bg-img left-branch bg-img"></object>
+        <object data="./assets/svg/whyUs/right-branch.svg" type="" class="whyUs__bg-img right-branch bg-img"></object>
+        <object data="./assets/svg/whyUs/bottle.svg" type="" class="whyUs__bg-img bottle bg-img"></object>
+        <object data="./assets/svg/whyUs/brush.svg" type="" class="whyUs__bg-img brush bg-img"></object>
+        <object data="./assets/svg/whyUs/pencil.svg" type="" class="whyUs__bg-img pencil bg-img"></object>
+        <object data="./assets/svg/whyUs/tongs.svg" type="" class="whyUs__bg-img tongs  bg-img"></object>
+    </section>
 
-                    <div class="combo__item ">
-                        <div class="item-combo">
 
-                            <div class="item-combo__header">
+    <section class="contacts">
+        <div class="container section__content contacts__section">
 
-                                <img src="./assets/img/COMBO/image.webp" alt="" class="item-combo__img">
-                            </div>
-                            <div class="item-combo__body">
+            <div class="section__header whyUs__header">
+                <h2 class="section__title">Контакты
+                </h2>
+            </div>
 
-                                <div class="item-combo__body-wrapper">
-
-                                    <div class="item-combo__prices">
-                                        <span class="item-combo__price item__price">147.000</span>
-                                        <strike class="item-combo__price-stroke">155.000</strike>
-                                    </div>
-                                    <h3 class="item-combo__title item__title ">Combo Revo Đậm Đà</h3>
-                                    <p class="item-combo__text  item__text">Hàm lượng caffein trong Revo Đậm Đà đủ mạnh
-                                        để
-                                        làm
-                                        bạn tỉnh táo làm việc...</p>
-                                    <div class="item-combo__btn btn-combo"><button class="btn-combo__buy btn__buy">MUA
-                                            NGAY</button><button class="btn-combo__more btn__more">CHI TIẾT</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="combo__item">
-                        <div class="item-combo">
-
-                            <div class="item-combo__header">
-                                <img src="./assets/img/COMBO/image-1.webp" alt="" class="item-combo__img">
-                            </div>
-                            <div class="item-combo__body">
-                                <div class="item-combo__body-wrapper">
-
-                                    <div class="item-combo__prices">
-                                        <span class="item-combo__price item__price">156.000</span>
-                                        <strike class="item-combo__price-stroke">165.000</strike>
-                                    </div>
-                                    <h3 class="item-combo__title item__title">Combo Revo Everyday</h3>
-                                    <p class="item-combo__text  item__text">Revo Everyday được phối trộn giữa vị đắng
-                                        của
-                                        hạt
-                                        Robusta và hương thơm...</p>
-                                    <div class="item-combo__btn btn-combo"><button class="btn-combo__buy btn__buy">MUA
-                                            NGAY</button><button class="btn-combo__more btn__more">CHI TIẾT</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="combo__item">
-                        <div class="item-combo">
-
-                            <div class="item-combo__header">
-                                <img src="./assets/img/COMBO/image-2.webp" alt="" class="item-combo__img">
-                            </div>
-                            <div class="item-combo__body">
-                                <div class="item-combo__body-wrapper">
-
-                                    <div class="item-combo__prices">
-                                        <span class="item-combo__price item__price">275.000</span>
-                                        <strike class="item-combo__price-stroke">260.000</strike>
-                                    </div>
-                                    <h3 class="item-combo__title item__title  ">REVO Morning</h3>
-                                    <p class="item-combo__text  item__text">Honey – trong tên gọi Revo Honey đến từ
-                                        phương
-                                        pháp
-                                        chế biến hạt Arabica...</p>
-                                    <div class="item-combo__btn btn-combo"><button class="btn-combo__buy btn__buy">MUA
-                                            NGAY</button><button class="btn-combo__more btn__more">CHI TIẾT</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="combo__item">
-                        <div class="item-combo">
-
-                            <div class="item-combo__header">
-                                <img src="./assets/img/COMBO/image-3.webp" alt="" class="item-combo__img">
-                            </div>
-                            <div class="item-combo__body">
-                                <div class="item-combo__body-wrapper">
-
-                                    <div class="item-combo__prices">
-                                        <span class="item-combo__price item__price">249.000</span>
-                                        <strike class="item-combo__price-stroke">236.000</strike>
-                                    </div>
-                                    <h3 class="item-combo__title item__title  ">Combo Revo Honey</h3>
-                                    <p class="item-combo__text  item__text">Revo Natural là dòng cà phê đặc biệt của
-                                        Revo
-                                        Coffe
-                                        e dành riêng ...</p>
-                                    <div class="item-combo__btn btn-combo"><button class="btn-combo__buy btn__buy">MUA
-                                            NGAY</button><button class="btn-combo__more btn__more">CHI TIẾT</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="contacts__info">
+                <div class="info-contact">
+                    <p class="info-contact__text item__text">Мы находимся по адресу:
+                        <br> Г. Москва, Кронштадтский б-р, 39-1(с <span class="color_accent"> 10-00</span> до <span
+                            class="color_accent">22-00</span>)
+                    </p>
                 </div>
-                <div class="combo__resizeOberver"></div>
+                <div class="info-contact">
+                    <p class="info-contact__text item__text">Мы находимся по адресу:
+                        <br> <span class="color_accent">8(915)247-00-43</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="contacts__body section__body">
+                <div class="contacts__item item-contact item">
+                    <a class="item-contact__link" href="https://vk.com/borman1997">
+                        <img class="item-contact__img" src="./assets/svg/contacts/vk.svg" alt="" srcset="">
+                        <h3 class="item-contact__title item__title">Вконтакте</h3>
+                    </a>
+                </div>
+                <div class="contacts__item item-contact item">
+                    <a class="item-contact__link" href="https://vk.com/borman1997">
+                        <img class="item-contact__img" src="./assets/svg/contacts/instagramm.svg" alt="" srcset="">
+                        <h3 class="item-contact__title item__title">Insagram</h3>
+                    </a>
+                </div>
+                <div class="contacts__item item-contact item">
+                    <a class="item-contact__link" href="https://t.me/BorisVolkov16">
+                        <img class="item-contact__img" src="./assets/svg/contacts/telegramm.svg" alt="" srcset="">
+                        <h3 class="item-contact__title item__title">Telegram</h3>
+                    </a>
+                </div>
+                <div class="contacts__item item-contact item">
+                    <a class="item-contact__link" href="https://wa.me/89194114604">
+                        <img class="item-contact__img" src="./assets/svg/contacts/whatsup.svg" alt="" srcset="">
+                        <h3 class="item-contact__title item__title">WhatsApp</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="contacts__footer footer-contacts">
+                <p class="footer-contacts__content">© 2018 - <span
+                        class="footer-contacts__year footer-contacts__span"></span> Юлия -
+                    Салон красоты и косметологии</p>
             </div>
         </div>
     </section>
-    <footer class="footer">
-        <span class="footer__span">
-            © Revo Coffee Việt Nam - 2018
-        </span>
-    </footer>
-    <script src="./js/script.js"></script>
+    <div id="popup-main" class="popup popup--hidden">
+
+        <div class="popup__body">
+            <!--  popup__modal--active -->
+            <div data-modal="form" class="popup__modal popup__item">
+                <form class="popup__modal-wrapper contact-form">
+                    <img data-modal="form" src="./assets/svg/close-btn.svg" alt="" class="popup__modal-close">
+                    <h2 class="contact-form__title item__title">Заголовок в 1 или
+                        2 строки</h2>
+                    <div class="contact-form__item">
+                        <input required placeholder="Ваше имя" type="text" name="name" id="name"
+                            class="contact-form__input">
+                        <div class="contact-form__invalid">
+                            Введите имя корректно
+                        </div>
+
+                    </div>
+                    <div class="contact-form__item">
+                        <input required placeholder="Номер телефона" type="text" name="number" id="phone"
+                            class="contact-form__input">
+                        <div class="contact-form__invalid">
+                            Введите номер корректно
+                        </div>
+                    </div>
+
+                    <div class="contact-form__item">
+
+                        <textarea placeholder="Комментарий" name="textarea" id=""
+                            class="contact-form__textarea"></textarea>
+                    </div>
+                    <!-- <input type="submit" value="Отправить" class="contact-form__btn"> -->
+                    <div class="contact-form__item">
+                        <p class="contact-form__text">
+                            Нажимая на кнопку «Отправить», вы даете согласие
+                            на обработку своих <a href="#" class="contact-form__link"> персональных
+                                данных </a>
+                        </p>
+                    </div>
+                    <button data-modal="success" type="submit"
+                        class="btn contact-form__btn btn__popup btn__linear  btn__shadow">
+                        <span class="btn__span"> Отправить</span>
+                        <div class="rippleJS">
+                            <div class="ripple"></div>
+                        </div>
+
+                    </button>
+                </form>
+            </div>
+            <div data-modal="success" class="popup__modal popup__item">
+
+                <div class="modal-success popup__modal-wrapper">
+                    <img data-modal="success" src="./assets/svg/close-btn.svg" alt="" class="popup__modal-close">
+                    <img src="./assets/svg/success.svg" alt="" srcset="">
+                    <h2 class="modal-success__title item__title">Спасибо за заявку!</h2>
+                    <p class="modal-success__text item__text">Мы свяжемся с вами в ближайшее время.</p>
+                    <button data-modal="close" type="button" class="btn contact-form__btn btn__shadow btn__linear ">
+                        Закрыть
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="./js/script.js"></script>
 </body>
 
 </html>

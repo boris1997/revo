@@ -1,0 +1,57 @@
+.contacts {
+  background: url("../assets/backgrounds/background-contacts.webp") no-repeat
+    center bottom/cover;
+  &__section {
+    position: relative;
+  }
+  &__body {
+    /*     @include flexbox(row, space-between, space-between); */
+    margin-top: rem(80px);
+    /*     flex-wrap: wrap;
+       display: grid;
+    grid-gap: rem(60px); */
+    justify-content: space-between;
+    /*     grid-template: repeat(2, 1fr) / repeat(auto-fit, minmax(rem(265px), 1fr)); */
+    @include grid(0, rem(80px), rem(20px), 1, 1fr, auto-fit, 80px, 130px);
+  }
+
+  &__info {
+    @include flexbox(row, space-between, center);
+    margin-bottom: 300px;
+    margin-top: 90px;
+    gap: 15px;
+    @media (max-width: 480px) {
+      margin-bottom: 150px;
+    }
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    font-weight: 600;
+    // font-style: no;
+  }
+}
+
+.item-contact {
+  &__title {
+    margin-top: rem(21.5px);
+  }
+  &__text {
+    margin-top: rem(12px);
+    text-align: center;
+    max-width: rem(226px);
+  }
+
+  &__link {
+    @include flexbox(column, space-between, center);
+  }
+  @media (max-width: 480px) {
+    .item-contact {
+      &__img {
+        width: 50px;
+      }
+    }
+  }
+}

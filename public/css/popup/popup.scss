@@ -1,0 +1,83 @@
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.36);
+  top: 0;
+  left: 0;
+  z-index: 2;
+  &__body {
+    min-height: 100%;
+
+    /* @include flexbox(column, center, center); */
+  }
+
+  &__item {
+    @include position(absolute, "", 0, 0, 0, 0, auto);
+    @include flexbox(column, center, center);
+    min-height: 100%;
+    width: 100%;
+  }
+  &__modal {
+    visibility: hidden;
+    padding-left: rem(16px);
+    /*     @include flexbox(column, center, center); */
+  }
+
+  &__modal-wrapper {
+    padding: rem(36px);
+    background-color: $primaryColor !important;
+    color: initial !important;
+    border-radius: rem(12px);
+    position: relative;
+    opacity: 0;
+    @include flexbox(column, center, center);
+    // transform: perspective(rem(600px)) translate(0, -100%) rotateX(45deg);
+    transform: translateY(-100%);
+    // transition: all 0.5s ease-in-out;
+    max-width: rem(450px);
+    /*  margin-right: rem(16px); */
+  }
+
+  &__modal-wrapper--margin {
+    margin-right: rem(16px);
+  }
+  &__modal--active {
+    visibility: visible;
+    padding: 0 rem(16px);
+  }
+  &__modal--active > &__modal-wrapper {
+    // transform: perspective(0) translate(0, 0) rotateX(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  &__modal-close {
+    cursor: pointer;
+    @include position(absolute, "", rem(19px), auto, auto, rem(19px), auto);
+  }
+}
+
+.popup--hidden {
+  visibility: hidden;
+}
+
+.modal-reference {
+  max-width: rem(831px);
+  &__info {
+    @include flexbox(row, flex-start, flex-start);
+    align-self: flex-start;
+  }
+
+  &__text {
+    margin-top: rem(10px);
+  }
+}
+
+.reference-info {
+  &__text {
+    margin-top: 0;
+    color: initial;
+    margin-left: rem(10px);
+  }
+}

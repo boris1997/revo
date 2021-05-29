@@ -167,7 +167,8 @@ class Slider {
             this.currentIndex = i;
             this.setCurrentXTranslation();                                  // Меняем текущий транслэйт слайдер 
             this.setSliderPositionX(this.main, this.currentTranslationX);  // Устанавливаем транслэйт для слайдера
-            this.setSlideNumber(this.slideNumber)
+            console.log(item)
+            this.setSlideText(this.slideNumber, item)
             if (this.direction() === 'column') {
                 this.setSliderPositionY(this.toggleMoveGif, this.setCurrentFullBodyTranslation(100))   // Меняем текущий транслэйт движущегося элемента и станавливаем транслэйт для движущегося элемента
             } else {
@@ -309,7 +310,7 @@ class Slider {
     percentToAbsolute = (percent, container) => percent / 100 * container  // Перевод в абсолюбное значение
 
 
-    setSlideNumber = (elem) => elem.textContent = this.currentIndex + 1  // Устанавливаем номер слайда
+    setSlideText = (slide, elem) => slide.textContent = elem.textContent // Устанавливаем номер слайда
 
 
     setPrevTranslation = () => this.prevTranslation = this.currentIndex * - this.absToPercent(this.content[0].clientWidth + this.margin, this.main.clientWidth);// Устанавливаем предыдущий трансл
@@ -339,47 +340,12 @@ class Slider {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Coffee Slider
-    const arrowCof = [...document.querySelectorAll(".coffee__toggle-btn")];
-    const contentCof = [...document.querySelectorAll(".coffee__item")];
-    const mainCof = document.querySelector(".coffee__body-wrapper");
-    const resizeOberverCof = document.querySelector(".coffee__resizeOberver");
-
-    const sliderCoffee = new Slider(contentCof, mainCof, arrowCof, resizeOberverCof, null, null, 0, null, null);
-
-    sliderCoffee.getMargin();
-    sliderCoffee.getUnactiveElts();
-    sliderCoffee.getTranslateStepX();
-    sliderCoffee.initArrowsBtns();
-    sliderCoffee.initDrag();
-    sliderCoffee.contextMenu();
-    sliderCoffee.slideResizeObserver();
-
-
-
-    // Combo Slider
-
-    const arrowCom = [...document.querySelectorAll(".combo__toggle-btn")];
-    const contentCom = [...document.querySelectorAll(".combo__item")];
-    const mainCom = document.querySelector(".combo__body-wrapper");
-    const resizeOberverCom = document.querySelector(".combo__resizeOberver");
-
-    const sliderCombo = new Slider(contentCom, mainCom, arrowCom, resizeOberverCom, null, null, 0, null, null);
-
-    sliderCombo.getMargin();
-    sliderCombo.getUnactiveElts();
-    sliderCombo.getTranslateStepX();
-    sliderCombo.initArrowsBtns();
-    sliderCombo.initDrag();
-    sliderCombo.contextMenu();
-    sliderCombo.slideResizeObserver();
-
 
 
     // Giftset Slider
 
-    const contentGif = [...document.querySelectorAll(".giftset__body-wrapper")];
-    const mainGif = document.querySelector(".giftset__body");
+    const contentGif = [...document.querySelectorAll(".services__slide")];
+    const mainGif = document.querySelector(".services__body");
     const toggleBtnGif = [...document.querySelectorAll(".togglers__item")];
     const toggleMoveGif = document.querySelector(".togglers__item-move");
     const slideNumber = document.querySelector(".togglers__slide-number");
