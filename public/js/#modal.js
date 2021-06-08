@@ -104,6 +104,11 @@ class Modal {
         popupModalForm.addEventListener('submit', (e) => {
             console.log('ok')
             e.preventDefault()
+            let tempParams = {
+                name: this.formInputs[0].value,
+                phone: this.formInputs[1].value
+            }
+            Xhr.makeRequest(tempParams);
             !popupModalForm.classList.contains(this.staticForm) && ClassToggle.removeClass(popupModalForm, this.popupModalActive)
             this.popup.classList.contains(this.popupHidden) && ClassToggle.removeClass(this.popup, this.popupHidden)
             this.clearFields(this.formInputs)

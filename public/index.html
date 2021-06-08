@@ -4,11 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Author: Volkov Boris, sitename: vehicleblackboxdvr, auto videoregistrator">
+    <meta name="description" content="Author: Volkov Boris, sitename: salonkrasotyjulia, auto salonkrasotyjulia">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="./assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="./css/style.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:900&display=swap" rel="stylesheet" />
-    <title>revo project</title>
+    <title>Салон Красоты Юлия</title>
 </head>
 
 <body class="body">
@@ -19,7 +26,7 @@
                 <div class="header__content">
                     <div class="header__logo logo">
                         <a href="index.html" class="logo__link">
-                            <img src="./assets/img/logo.svg" alt="лого" class="logo__img">
+                            <img src="./assets/img/logo.webp" alt="лого" class="logo__img">
                         </a>
                     </div>
                     <!-- <nav class="nav">
@@ -30,9 +37,9 @@
                             <li class="nav__items"><a href="articles.html" class="nav__link">Статьи</a></li>
                         </ul>
                     </nav> -->
-                    <div class="header__contacts">
+                    <!--    <div class="header__contacts">
                         <a href="contact.html" class="header__btn btn__link btn btn__main">Контакты</a>
-                    </div>
+                    </div> -->
                     <!-- <div class="cross hamburger-menu header__hamburger-menu">
                         <svg class="hamburger-menu__content" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                             <path class="hamburger-menu__line hamburger-menu__line--1"
@@ -190,7 +197,7 @@
                                         </div>
                                     </div>
                                     <div class="item-services__btn item-services__footer btn-services"><button
-                                            class="btn-services__buy btn__buy  btn__popup" data-modal="form"
+                                            class="btn btn-services__buy btn__buy  btn__popup" data-modal="form"
                                             type="button">Оставить
                                             заявку</button>
                                     </div>
@@ -274,7 +281,7 @@
 
                                     </div>
                                     <div class="item-services__btn item-services__footer btn-services"><button
-                                            class="btn-services__buy btn__buy  btn__popup" data-modal="form"
+                                            class="btn btn-services__buy btn__buy  btn__popup" data-modal="form"
                                             type="button">Оставить
                                             заявку</button>
                                     </div>
@@ -315,7 +322,7 @@
 
                                     </div>
                                     <div class="item-services__btn item-services__footer btn-services"><button
-                                            class="btn-services__buy btn__buy  btn__popup" data-modal="form"
+                                            class="btn btn-services__buy btn__buy  btn__popup" data-modal="form"
                                             type="button">Оставить
                                             заявку</button>
                                     </div>
@@ -472,7 +479,7 @@
                                         </div>
                                     </div>
                                     <div class="item-services__btn item-services__footer  btn-services"><button
-                                            class="btn-services__buy btn__buy  btn__popup" data-modal="form"
+                                            class="btn btn-services__buy btn__buy  btn__popup" data-modal="form"
                                             type="button">Оставить
                                             заявку</button>
                                     </div>
@@ -682,7 +689,7 @@
                                         </div>
                                     </div>
                                     <div class="item-services__btn item-services__footer  btn-services"><button
-                                            class="btn-services__buy btn__buy  btn__popup" data-modal="form"
+                                            class="btn btn-services__buy btn__buy  btn__popup" data-modal="form"
                                             type="button">Оставить
                                             заявку</button>
                                     </div>
@@ -721,10 +728,11 @@
                 </div>
                 <div class="whyUs__right">
                     <ul class="whyUs__list">
-                        <li class="whyUs__item item__text">Центр красоты и косметологии "Юлия" - это то место, где Вам
+                        <li class="whyUs__item item__text item-check">Центр красоты и косметологии "Юлия" - это то
+                            место, где Вам
                             всегда рады</li>
-                        <li class="whyUs__item item__text">Знаем и любим свое дело</li>
-                        <li class="whyUs__item item__text">Мы находим к каждому клиенту индивидуальный подход
+                        <li class="whyUs__item item__text item-check">Знаем и любим свое дело</li>
+                        <li class="whyUs__item item__text item-check">Мы находим к каждому клиенту индивидуальный подход
                         </li>
                     </ul>
                 </div>
@@ -755,8 +763,9 @@
                     </p>
                 </div>
                 <div class="info-contact">
-                    <p class="info-contact__text item__text">Мы находимся по адресу:
-                        <br> <span class="color_accent">8(915)247-00-43</span>
+                    <p class="info-contact__text item__text">Контактный номер:
+                        <br> <a href="tel:+8(915)247-00-43"
+                            class="link info-contact__link color_accent">8(915)247-00-43</a>
                     </p>
                 </div>
             </div>
@@ -788,7 +797,7 @@
                 </div>
             </div>
             <div class="contacts__footer footer-contacts">
-                <p class="footer-contacts__content">© 2018 - <span
+                <p class="footer-contacts__content item__text">© 2018 - <span
                         class="footer-contacts__year footer-contacts__span"></span> Юлия -
                     Салон красоты и косметологии</p>
             </div>
@@ -801,8 +810,7 @@
             <div data-modal="form" class="popup__modal popup__item">
                 <form class="popup__modal-wrapper contact-form">
                     <img data-modal="form" src="./assets/svg/close-btn.svg" alt="" class="popup__modal-close">
-                    <h2 class="contact-form__title item__title">Заголовок в 1 или
-                        2 строки</h2>
+                    <h2 class="contact-form__title item__title">Оставить заявку</h2>
                     <div class="contact-form__item">
                         <input required placeholder="Ваше имя" type="text" name="name" id="name"
                             class="contact-form__input">
@@ -834,11 +842,8 @@
                     </div>
                     <button data-modal="success" type="submit"
                         class="btn contact-form__btn btn__popup btn__linear  btn__shadow">
-                        <span class="btn__span"> Отправить</span>
-                        <div class="rippleJS">
-                            <div class="ripple"></div>
-                        </div>
-
+                        Отправить
+                        <div class="ripple"></div>
                     </button>
                 </form>
             </div>
@@ -859,7 +864,7 @@
 
     </div>
 
-    <script type="module" src="./js/script.js"></script>
+    <script type="module" src="./js/script.min.js"></script>
 </body>
 
 </html>

@@ -9,13 +9,15 @@ let path = {
         css: project_folder + "/css/",
         js: project_folder + "/js",
         assets: project_folder + "/assets/",
+        favicons: project_folder + "/assets/favicon/",
         fonts: project_folder + "/fonts/"
     },
     src: {
         html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
         css: source_folder + "/css/**/*.scss",
         js: source_folder + "/js/**/*.js",
-        assets: source_folder + "/assets/**/*.{jpg,png,svg,gif,ico,mp4}",
+        assets: [source_folder + "/assets/**/*.{jpg,png,svg,gif,ico,mp4}", "!" + source_folder + "/assets/favicon/**/*.{jpg,png,svg,gif,ico,mp4}"],
+        favicons: source_folder + "/assets/favicon/**/*.{jpg,png,svg,gif,ico,mp4}",
         fonts: source_folder + "/fonts/**/*.{ttf,woff,woff2,eot,css}"
     },
     watch: {
@@ -43,8 +45,9 @@ let { src, dest } = require('gulp'),
     imagemin = require('gulp-imagemin'),
     webp = require('gulp-webp'),
     scss = require('gulp-dart-sass'),
-    /*  videofy = require('videofy'), */
-    fs = require('fs')
+    babel = require('gulp-babel')
+/*  videofy = require('videofy'), */
+fs = require('fs')
 
 
 function browserSync(params) {
@@ -75,6 +78,11 @@ function images() {
               })
           )
           .pipe(dest(path.build.assets)) */
+        .pipe(browsersync.stream())
+}
+function favicons() {
+    return src(path.src.favicons)
+        .pipe(dest(path.build.favicons))
         .pipe(browsersync.stream())
 }
 
@@ -116,6 +124,9 @@ function css() {
 
 function js() {
     return src(path.src.js)
+        /*      .pipe(babel({
+                 presets: ['@babel/env']
+             })) */
         .pipe(concat("script.js"))
         .pipe(dest(path.build.js))
         .pipe(terser())
@@ -152,6 +163,7 @@ function watchFiles(params) {
     gulp.watch([path.watch.css], css);
     gulp.watch([path.watch.js], js);
     gulp.watch([path.watch.assets], images);
+
 }
 
 function clean(params) {
@@ -182,13 +194,14 @@ function fontsStyle(params) {
 }
 function cb() { }
 
-let build = gulp.series(clean, gulp.parallel(html, css, js, images, fontsWoff, fontsStyle));
+let build = gulp.series(clean, gulp.parallel(html, css, js, images, favicons, fontsWoff, fontsStyle));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 exports.fontsStyle = fontsStyle;
 exports.fontsWoff = fontsWoff;
 
 exports.images = images;
+exports.favicons = favicons;
 exports.html = html;
 exports.css = css;
 exports.js = js;

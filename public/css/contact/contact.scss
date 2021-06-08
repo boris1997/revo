@@ -2,6 +2,7 @@
   @include flexbox(column, space-between, flex-start);
   background-color: $primaryColor;
   border-radius: rem(12px);
+
   padding: rem(42px) rem(52px);
   &__title {
     color: initial;

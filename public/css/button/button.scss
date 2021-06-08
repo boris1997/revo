@@ -3,8 +3,12 @@
 
 .btn {
   outline: none;
-  background-color: transparent;
-
+  color: $lightPink;
+  border-radius: 8px !important;
+  height: 50px;
+  font-size: 16px;
+  background-color: $accentColor;
+  font-weight: 500;
   &__more {
     background-color: transparent;
     color: $primaryColor;
@@ -16,7 +20,6 @@
     border-radius: 19px;
     width: 134px;
     height: 32px;
-    color: #f9fbff;
     font-weight: 600;
   }
 

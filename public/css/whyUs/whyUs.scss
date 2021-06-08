@@ -28,15 +28,10 @@
     margin-top: 0;
   }
   &__item {
-    margin-left: 16px;
-    padding-left: 18px;
     font-weight: 400;
   }
   &__item + &__item {
     margin-top: 18px;
-  }
-  &__item::marker {
-    content: url("../../assets/svg/check.svg");
   }
 }
 
@@ -129,6 +124,5 @@
     .brush {
       right: 1%;
     }
-    
   }
 }

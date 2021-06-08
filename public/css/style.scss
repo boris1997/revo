@@ -50,6 +50,11 @@ body {
   line-height: 1;
   font-family: "LovelaceText";
 }
+
+.body--noscroll {
+  overflow: hidden;
+}
+
 input,
 button,
 textarea {
@@ -100,11 +105,11 @@ h2 {
 }
 
 .page {
-  background: url("../assets/img/main-backgrounnd.svg") no-repeat center
+  background: url("../assets/backgrounds/main-background.svg") no-repeat center
     top/cover;
   height: 100vh;
   position: relative;
-  max-height: 700px;
+  max-height: 800px;
   &__title {
     margin-top: 88px;
     margin-bottom: 85px;
@@ -127,7 +132,7 @@ h2 {
   &__decoration {
     @include position(absolute, "", auto, -5px, 0, 0, auto);
     width: 100%;
-    height: 140px;
+    height: 203px;
     background: url("../assets/img/main-decoration.svg") no-repeat center
       bottom/cover;
   }

@@ -1,0 +1,8 @@
+.item-check {
+  padding-left: 32px;
+  position: relative;
+  &::before {
+    @include position(absolute, "", 0, 0, 0, auto, auto);
+    content: url("../assets/svg/check.svg");
+  }
+}

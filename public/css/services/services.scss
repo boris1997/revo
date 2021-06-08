@@ -37,7 +37,7 @@
   &__body {
     @include flexbox(row, "", space-between);
     flex: 1;
-    width: 87%;
+    width: 85%;
   }
   &__slide {
     min-width: 100%;
@@ -244,7 +244,7 @@
 
 .btn-services {
   &__buy {
-    width: 166px;
+    width: 220px;
     height: 38px;
   }
   &__more {
